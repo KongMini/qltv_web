@@ -1,0 +1,73 @@
+﻿
+@font-face {
+    font-family: 'roboto-black';
+    src: url('roboto/roboto-black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-blackitalic';
+    src: url('roboto/roboto-blackitalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-bold';
+    src: url('roboto/roboto-bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-bolditalic';
+    src: url('roboto/roboto-bolditalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-bold';
+    src: url('roboto/robotocondensed-bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-bolditalic';
+    src: url('roboto/robotocondensed-bolditalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-italic';
+    src: url('roboto/robotocondensed-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-light';
+    src: url('roboto/robotocondensed-light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-lightitalic';
+    src: url('roboto/robotocondensed-lightitalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'robotocondensed-regular';
+    src: url('roboto/robotocondensed-regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-italic';
+    src: url('roboto/roboto-italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-light';
+    src: url('roboto/roboto-light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-lightitalic';
+    src: url('roboto/roboto-lightitalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-medium';
+    src: url('roboto/roboto-medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-mediumitalic';
+    src: url('roboto/roboto-mediumitalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-regular';
+    src: url('roboto/roboto-regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-thin';
+    src: url('roboto/roboto-thin.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'roboto-thinitalic';
+    src: url('roboto/roboto-thinitalic.ttf') format('truetype');
+}

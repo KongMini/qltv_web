@@ -1,0 +1,753 @@
+﻿section#content {
+}
+
+ul.menu-cate-artical li a {
+    font-size: 1.5rem;
+    /*padding-left: 10px;*/
+    -webkit-transition: opacity 275ms ease;
+    transition: opacity 275ms ease;
+    color: #000;
+    font-family: 'roboto-thin';
+    margin-bottom: 5px!important;
+}
+
+    ul.menu-cate-artical li a.active {
+        font-family: 'roboto-light';
+        text-transform: uppercase;
+        margin-bottom: 24px !important;
+        text-decoration: underline;
+    }
+
+ul.menu-cate-artical li a:hover {
+    /*color: #b99d6b;*/
+    color: none;
+    /*padding-left: 25px;*/
+    -webkit-transition: opacity 275ms ease;
+    transition: opacity 275ms ease;
+    text-decoration: underline;
+    opacity: .7;
+    font-family: 'roboto-medium';
+}
+
+.article-newest {
+    font-family: roboto-light;
+    text-transform: uppercase;
+    line-height: 150%;
+    font-size: 1.5rem;
+}
+
+.p-hl {
+    font-size: 1.5rem;
+    color: #000;
+    border-bottom: 1px solid #a8a5a5;
+    font-family: 'roboto-light';
+}
+
+.title-article {
+    font-family: 'roboto-light';
+    color: #000;
+    font-size: 1.8rem;
+    text-transform:uppercase;
+}
+
+.article-hl .article-des {
+    font-size: 1.2rem;
+    font-family: 'roboto-thin';
+    color: #5F5F5F;
+}
+
+.menu-cate-artical {
+    list-style: none;
+    padding-left: 15%;
+}
+
+.article-hl .more-content {
+    font-size: 1.2rem;
+    font-family: 'roboto-thin';
+    color: #5F5F5F;
+}
+
+    .article-hl .more-content:hover {
+        opacity: .7;
+    }
+
+.article-hl .more-content {
+    font-size: 1rem;
+}
+
+.article-page .slider .product-header {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    float: left;
+    position: relative;
+    z-index: 4;
+    padding-top: 10.5%
+}
+
+.wp-article-hl .centered {
+    /*max-height: 680px;
+    overflow: hidden;*/
+}
+
+.article-page .slider {
+    width: 100%;
+    float: left;
+    height: 460px;
+    margin: 0
+}
+
+.article-hl.col-4 .title-article {
+    font-size: 1.5rem;
+    font-family: "Playfair Display",Regular;
+}
+
+.article-hl.col-4 .article-des {
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.article-page .slider .product-header .font-playfair {
+    font-size: 28px;
+    line-height: 30px;
+    color: #fff;
+    margin-top: 50px;
+    padding: 0;
+    margin-bottom: 0
+}
+
+.article-page .slider .product-header .font-sfui {
+    font-size: 16px;
+    margin: 0;
+    color: #fff
+}
+
+.article-page .slider .image-slide {
+    width: 100%;
+    float: left;
+    position: absolute;
+    top: 81px;
+    left: 0
+}
+
+.article-page .article {
+    width: 100%;
+    float: left
+}
+
+.article-page .article-detail {
+    /*padding-top: 40px;
+    padding-bottom: 30px;
+    padding-left: 10%;
+    padding-right: 10%*/
+}
+
+    .article-page .article-detail img {
+        max-width: 100% !important;
+        height: auto !important
+    }
+
+    .article-page .article-detail .article-title {
+        width: 100%;
+        float: left;
+        border-bottom: 1px solid #95989A;
+        margin-bottom: 3%;
+        display: none
+    }
+
+        .article-page .article-detail .article-title p {
+            margin: 0;
+            text-align: center;
+            width: auto;
+            float: left;
+            font-size: 16px;
+            color: #5F5F5F;
+            padding: 10px 30px;
+            cursor: pointer
+        }
+
+    .article-page .article-detail .left {
+        padding: 0;
+        margin: 0;
+        padding: 22px 22px 22px 0;
+        float: left
+    }
+
+    .article-page .article-detail .right {
+        padding: 0;
+        margin: 0;
+        padding: 22px 0 22px 22px;
+        float: right
+    }
+
+.article #itemContainer .article-item img {
+    width: 100%;
+    float: left
+}
+
+/*.article  #itemContainer .article-item .detail {
+        width: 100%;
+        float: left;
+        padding-top: 20px
+    }*/
+
+.article #itemContainer .article-item .detail h3 {
+    width: 100%;
+    float: left;
+    font-family: 'roboto-light';
+    font-size: 20px;
+    line-height: 28px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.article #itemContainer .detail p, .article #itemContainer .article-item .detail .more-content, p.subtitle-time {
+    font-family: roboto-thin!important;
+    font-size: 16px;
+    color: #000!important;
+    margin: 0;
+    line-height: 23px;
+    width: 100%;
+    float: left
+}
+    /*.article #itemContainer .detail .more-content {
+    padding-top: 25px
+}*/
+    .article #itemContainer .article-item .detail .more-content p {
+        width: auto;
+        float: left;
+        cursor: pointer
+    }
+
+    .article #itemContainer .article-item .detail .more-content .line {
+        width: 58px;
+        float: left;
+        border: 1.5px solid black;
+        margin: 10px 0 0 15px;
+        margin-bottom: 0
+    }
+
+.article-page .button-more {
+    width: 100%;
+    float: left;
+    height: auto;
+    padding: 40px 0 40px 0;
+    cursor: pointer;
+    margin: 0;
+    text-align: center
+}
+
+.article-page .article-button {
+    width: 150px;
+    margin: 0 auto
+}
+
+.article-page .article-button {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 18px 0;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    background-color: #000;
+    margin-bottom: 0
+}
+
+.article-page .view-mobile {
+    display: none
+}
+
+.article-page .article-detail .article-title .active {
+    border-bottom: 2px solid #000
+}
+
+.detail .more-content:hover {
+    color: inherit;
+    transition: .7s;
+    opacity: .7;
+}
+
+.detail .more-content > span {
+    display: inline-block;
+    float: right;
+    font-family: 'roboto-thin';
+    font-size: 13px;
+    margin-right:5px;
+}
+
+.article-page .article-detail .featured-image a {
+    display: block;
+}
+
+.article-page .article-detail .detail {
+}
+
+.article-page .article-detail .article-item {
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+
+.article-page .article-detail h3 {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+@media(max-width:1660px) {
+    .article-page .slider .product-header {
+        padding-top: 11.5%
+    }
+
+        .article-page .slider .product-header .font-sfui {
+            font-size: 16px;
+            line-height: 28px
+        }
+
+        .article-page .slider .product-header .font-playfair {
+            font-size: 28px;
+            margin-top: 4px;
+            line-height: 30px
+        }
+
+    .article #itemContainer .article-item .detail h3 {
+        font-size: 20px;
+        line-height: 28px
+    }
+
+    .article #itemContainer .article-item .detail p, .article #itemContainer .article-item .detail .more-content {
+        font-size: 16px;
+        line-height: 23px
+    }
+
+    /*.article #itemContainer .article-item .detail .more-content {
+        padding-top: 25px
+    }*/
+}
+
+.article-wrap .page-title-head {
+    background: url(../images/article/banner-news-1920x460.jpg) center no-repeat;
+    background-size: cover;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+    .article-wrap .page-title-head * {
+        color: #ffffff !important
+    }
+
+@media(max-width:1660px) {
+    .article-page .slider .product-header .font-playfair {
+        line-height: 30px
+    }
+
+    .article-page .article-detail h3 {
+        font-size: 1.5rem;
+    }
+
+    .title-article {
+        font-size: 1.4rem;
+    }
+
+    .article-hl .article-des {
+        font-size: 1.1rem;
+    }
+}
+
+@media(max-width:1440px) {
+    .article-page .article-detail .article-title p {
+        font-size: 16px;
+        padding: 10px 20px
+    }
+
+    .article-page .slider .product-header .font-playfair {
+        font-size: 28px;
+        line-height: 30px;
+        margin-top: 0
+    }
+
+    .article-page .slider .product-header .font-sfui {
+        font-size: 16px;
+        line-height: 28px
+    }
+
+    .article #itemContainer .article-item .detail h3 {
+        font-size: 18px;
+        line-height: 20px
+    }
+
+    .article #itemContainer .article-item .detail p, .article #itemContainer .article-item .detail .more-content {
+        font-size: 14px;
+        line-height: 23px
+    }
+
+    /*.article #itemContainer .article-item .detail .more-content {
+        padding-top: 25px
+    }*/
+
+    .article-page .article-detail .right {
+        padding: 20px 0 20px 20px
+    }
+
+    .article-page .article-detail .left {
+        padding: 20px 20px 20px 0
+    }
+
+    .title-article {
+        font-size: 1.4rem;
+    }
+
+    .article-hl .article-des {
+        font-size: 1rem;
+    }
+
+    p.subtitle-time {
+        font-size: 10px !important;
+        line-height: 18px !important;
+    }
+}
+
+@media(max-width:1366px) {
+    .article-page .slider {
+        height: 275px
+    }
+
+        .article-page .slider .product-header .font-playfair {
+            font-size: 28px;
+            line-height: 30px;
+            margin: 0
+        }
+
+        .article-page .slider .product-header .font-sfui {
+            font-size: 16px;
+            line-height: 23px
+        }
+
+    .article #itemContainer .article-item .detail h3 {
+        font-size: 20px;
+        line-height: 28px;
+        padding-bottom: 10px
+    }
+
+    .article #itemContainer .article-item .detail .more-content {
+        padding-top: 15px
+    }
+
+    .article #itemContainer .article-item .detail p, .article #itemContainer .article-item .detail .more-content {
+        font-size: 16px;
+        line-height: 23px
+    }
+
+    .article-page .article-detail .left {
+        padding: 20px 15px 20px 0
+    }
+
+    .article-page .article-detail .right {
+        padding: 20px 0 20px 15px
+    }
+
+    .article-page .article-button {
+        width: 200px
+    }
+
+        .article-page .article-button p {
+            padding: 14px 0
+        }
+
+    .article-page .button-more {
+        padding: 25px 0 0 0
+    }
+}
+
+@media(max-width:1280px) {
+    .article-page .slider .article-content {
+        padding-top: 4%
+    }
+
+    .article-page .slider .product-header .font-sfui {
+        font-size: 16px;
+        line-height: 30px
+    }
+
+    .article-page .article-detail {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+}
+
+@media (max-width:1024px) {
+    .article-page .slider .article-content {
+        padding-top: 1%
+    }
+
+    .article-page .slider .product-header .font-playfair {
+        font-size: 28px;
+        line-height: 30px
+    }
+
+    .article-page .slider .product-header .font-sfui {
+        font-size: 16px;
+        line-height: 23px
+    }
+
+    .article-page .slider {
+        height: 200px
+    }
+
+    .article-page .article-detail .article-title p {
+        font-size: 16px;
+        padding: 10px 15px
+    }
+
+    .article #itemContainer .article-item .detail {
+        padding-top: 10px
+    }
+
+        .article #itemContainer .article-item .detail h3 {
+            font-size: 20px;
+            line-height: 28px;
+            padding-bottom: 10px
+        }
+
+        .article #itemContainer .article-item .detail p, .article #itemContainer .article-item .detail .more-content {
+            font-size: 16px;
+            line-height: 23px
+        }
+
+        .article #itemContainer .article-item .detail .more-content {
+            padding-top: 10px;
+            display: inline-block
+        }
+
+            .article #itemContainer .article-item .detail .more-content .line {
+                width: 25px;
+                border: 1px solid black;
+                margin: 8px 0 0 15px
+            }
+
+    .article-page .article-detail .left {
+        padding: 15px 10px 0 0
+    }
+
+    .article-page .article-detail .right {
+        padding: 15px 0 0 10px
+    }
+
+    .article-page .article-button {
+        width: 150px
+    }
+
+    .article-page .article-button {
+        padding: 10px 0;
+        font-size: 12px;
+        line-height: 12px
+    }
+}
+
+@media (min-width: 768px) {
+    .product-content .product-item {
+        width: auto !important;
+    }
+}
+
+@media (max-width:768px) {
+    .article-page .view-mobile {
+        display: inherit
+    }
+
+    .article-page .view-destop {
+        display: none
+    }
+
+    .article-page .slider .product-header {
+        padding-top: 26%
+    }
+
+    .article-page .container-fluid {
+        margin: 0;
+        padding: 0
+    }
+
+    .article-page .slider .product-header .font-playfair {
+        font-size: 28px;
+        line-height: 45px
+    }
+
+    .article-page .article-detail .article-title p {
+        width: 50%;
+        float: left;
+        font-size: 16px
+    }
+
+    .article-page .article-detail .right {
+        padding: 15px 10px 0 0
+    }
+
+    .article-page .article-detail .left {
+        padding: 15px 0 0 10px
+    }
+
+    .article-page .article-detail .fix-padding {
+        padding: 15px 0 0 0
+    }
+
+    .article #itemContainer .article-item .detail .more-content p {
+        font-size: 14px;
+        line-height: 18px
+    }
+
+    .article #itemContainer .article-item .detail .more-content {
+        padding-top: 0px;
+        font-size: 12px;
+    }
+
+    .article #itemContainer .article-item .detail p, .article #itemContainer .article-item .detail .more-content {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .article-wrap .page-title-head {
+        background-size: cover;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important
+    }
+
+        .article-wrap .page-title-head p {
+            font-size: 14px !important
+        }
+
+    .article-page .article-detail {
+        padding-top: 0;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+
+    .article-page.article-page-detail .article-detail {
+        padding-top: 25px;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+
+    .article-page .article-detail h3 {
+        font-size: 18px
+    }
+
+    .article #itemContainer .article-item .detail h3 {
+        font-size: 18px;
+    }
+
+    .article-page .article-detail iframe {
+        max-width: 100% !important;
+        height: auto !important
+    }
+
+    li.active {
+        list-style: disc;
+        line-height: 27px;
+        font-size: 24px;
+        letter-spacing: 0;
+    }
+
+    .hidden-xs {
+        display: none;
+    }
+}
+
+@media (max-width:480px) {
+    .article-page .slider {
+        height: 175px
+    }
+
+        .article-page .slider .product-header .font-playfair {
+            font-size: 28px;
+            line-height: 30px
+        }
+
+        .article-page .slider .article-content {
+            padding-top: 6%
+        }
+
+    .article-page .article-detail .article-title p {
+        font-size: 16px;
+        padding: 7px 0
+    }
+
+    .article #itemContainer .article-item .detail h3 {
+        font-size: 18px;
+        line-height: 25px
+    }
+
+    .article #itemContainer .article-item .detail .more-content p {
+        font-size: 8px;
+        line-height: 10px
+    }
+
+    .article #itemContainer .article-item .detail {
+        padding-top: 5px
+    }
+
+        .article #itemContainer .article-item .detail h3 {
+            padding-bottom: 5px
+        }
+
+    .article-page .article-button {
+        width: 100px
+    }
+
+        .article-page .article-button p {
+            font-size: 10px;
+            line-height: 10px;
+            padding: 10px 0
+        }
+
+    .article-page .article-detail .right {
+        padding: 10px 5px 0 0
+    }
+
+    .article-page .article-detail .left {
+        padding: 10px 0 0 5px
+    }
+}
+
+@media (max-width:414px) {
+    .article-page .slider {
+        height: 135px
+    }
+
+        .article-page .slider .product-header .font-playfair {
+            font-size: 28px;
+            line-height: 30px
+        }
+
+        .article-page .slider .article-content {
+            padding-top: 4%
+        }
+}
+
+@media (max-width:375px) {
+    .article-page .slider {
+        height: 135px
+    }
+
+        .article-page .slider .product-header .font-playfair {
+            font-size: 28px;
+            line-height: 30px
+        }
+
+        .article-page .slider .article-content {
+            padding-top: 0%
+        }
+
+    .article-page .article-detail .article-title p {
+        font-size: 16px;
+        line-height: 13px
+    }
+}
+
+@media (max-width:330px) {
+    .article-page .slider {
+        height: 85px
+    }
+}

@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'inter-light';
+    src: url('../../fonts/inter/inter-light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'uvf didot';
+    src: url('../../fonts/uvn%20didot/uvf%20didot-2.ttf') format('truetype');
+}
+
+.timeline {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 1000px;
+    position: relative;
+}
+
+.timeline__content-title {
+    font-weight: normal;
+    font-size: 2em;
+    margin: 15px 0 0 0;
+    transition: .4s;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "uvf didot", sans-serif;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.timeline__content-desc {
+    margin: 0;
+    font-size: 15px;
+    box-sizing: border-box;
+    color: #000;
+    font-family: "inter-light", sans-serif;
+    font-weight: normal;
+    line-height: 25px;
+    text-transform: none;
+    letter-spacing: 2px;
+}
+
+.timeline:before {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    margin-left: -1px;
+    content: "";
+    background: rgba(0, 0, 0, 0.07);
+}
+
+@media only screen and (max-width: 767px) {
+    .timeline:before {
+        left: 40px;
+    }
+}
+
+.timeline-item {
+    padding: 40px 0;
+    opacity: .3;
+    filter: blur(2px);
+    transition: .5s;
+    box-sizing: border-box;
+    width: calc(50% - 40px);
+    display: flex;
+    position: relative;
+    transform: translateY(-80px);
+}
+
+    .timeline-item:before {
+        font-family: 'uvf didot', sans-serif;
+        content: attr(data-text1) '\A' '\2014' '\A' attr(data-text2);
+        letter-spacing: 3px;
+        width: 100%;
+        position: absolute;
+        color: #000;
+        font-size: 4em;
+        border-left: 2px solid #000;
+        top: 70%;
+        margin-top: -5px;
+        padding-left: 15px;
+        opacity: 0;
+        right: calc(-100% - 38px );
+        white-space: pre-wrap;
+        line-height: 40px;
+    }
+
+        .timeline-item:before[data-text="18"] {
+            color: red;
+        }
+    .timeline-item:nth-child(even) {
+        align-self: flex-end;
+    }
+
+        .timeline-item:nth-child(even):before {
+            right: auto;
+            text-align: right;
+            left: calc(-100% - 40px );
+            padding-left: 0;
+            border-left: none;
+            border-right: 2px solid rgba(0, 0, 0, 0.5);
+            padding-right: 15px;
+        }
+
+.timeline-item--active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+    .timeline-item--active:before {
+        top: 30%;
+        transition: .3s all .2s;
+        opacity: 1;
+    }
+
+    .timeline-item--active .timeline__content-title {
+        margin: 25px 0 0 0;
+    }
+
+@media only screen and (max-width: 767px) {
+    .timeline-item {
+        align-self: baseline !important;
+        width: 100%;
+        padding: 50px 30px 50px 80px;
+    }
+    .timeline-item--active {
+        padding: 0 30px 50px 80px;
+    }
+
+    .timeline-item:before {
+        left: 20px !important;
+        padding: 0 !important;
+        top: 15%;
+        text-align: center !important;
+        width: 60px;
+        border: none !important;
+        font-size: 26px;
+        padding-right: 20px !important;
+        line-height: 20px;
+        letter-spacing: 1px;
+    }
+
+    .timeline-item:last-child {
+        padding-bottom: 40px;
+    }
+    .timeline__content-title {
+        font-size: 24px;
+    }
+    .timeline {
+        max-width: 350px;
+    }
+    .timeline-item--active .timeline__content-title {
+        margin: 20px 0 5px 0;
+    }
+    .timeline__content-desc {
+        letter-spacing: 1px;
+    }
+}
+
+.timeline__img {
+    width: 90%;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-container {
+    width: 100%;
+    position: relative;
+    /*padding: 50px 0;*/
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+    .timeline-container:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0 0.8);
+        content: "";
+    }
+
+.timeline-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.timeline-header__title {
+    color: #000;
+    font-size: 46px;
+    font-family: Cardo;
+    font-weight: normal;
+    margin: 0;
+}
+
+.timeline-header__subtitle {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "inter-light", sans-serif;
+    font-size: 16px;
+    letter-spacing: 5px;
+    margin: 10px 0 0 0;
+    font-weight: normal;
+}

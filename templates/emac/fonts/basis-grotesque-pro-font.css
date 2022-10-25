@@ -1,0 +1,132 @@
+﻿/** Black Italic*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Black-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Black%20Italic.ttf");
+}
+
+/** Black*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Black";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Black.ttf");
+}
+
+/** Bold Italic*/
+@font-face {
+    font-family: "Basis Grotesque-Pro-Bold-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Bold%20Italic.ttf");
+}
+
+/** Bold*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Bold";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Bold.ttf");
+}
+
+/** Italic*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Italic.ttf");
+}
+
+/** Light Italic*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Light-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Italic.ttf");
+}
+
+/** Light*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Light";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Light.ttf");
+}
+
+/** Medium Italic*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Medium-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Medium%20Italic.ttf");
+}
+
+/** Mono Bold*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Mono-Bold";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Mono%20Bold.ttf");
+}
+
+/** Mono Italic*/
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Mono-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Mono%20Italic.ttf");
+}
+
+/** Mono */
+@font-face {
+    font-family: "Basis Grotesque Pro Mono";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Mono.ttf");
+}
+
+/** Off White Italic */
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Off-White-Italic";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Off%20White%20Italic.ttf");
+}
+
+/** Pro Off White */
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Off-White";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro%20Off%20White.ttf");
+}
+
+/** Basis Grotesque Pro */
+@font-face {
+    font-family: "Basis-Grotesque-Pro";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis%20Grotesque%20Pro.ttf");
+}
+
+/** Medium */
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Medium";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Basis-Grotesque-Pro-Medium.ttf");
+}
+
+/** Regular */
+@font-face {
+    font-family: "Basis-Grotesque-Pro-Regular";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/BasisGrotesquePro-Regular.ttf");
+}
+
+/** Miller Display Regular */
+@font-face {
+    font-family: "Miller-Display-Regular";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/Miller%20Display%20Regular.ttf");
+}
+
+/** Helvetica Neue */
+@font-face {
+    font-family: "Helvetica-Neue";
+    /*font-weight: 900;*/
+    src: url("basisgrotesqueprofont/helveticaneue.ttf");
+}
+
+/** Helvetica 400 */
+@font-face {
+    font-family: "Helvetica";
+    font-weight: 400;
+    src: url("basisgrotesqueprofont/Helvetica%20400.ttf");
+}

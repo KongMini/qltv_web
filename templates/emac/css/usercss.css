@@ -1,0 +1,351 @@
+﻿.membership-page
+{
+    width: 100%;
+    float: left;
+    padding-bottom: 30px;
+}
+
+.membership-page .font-sfui
+{
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.membership-page .form-group
+{
+    font-weight: 500;
+    font-family: "SF Display", "SF Text", "SF Mono", serif;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.membership-page .form-group label
+{
+    margin-bottom: 15px;
+}
+
+.membership-page .form-row .form-group
+{
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.membership-page .fix-font
+{
+    padding-top: 8px;
+    padding-bottom: 22px;
+    margin-bottom: 25px;
+}
+
+.checkout_page_header
+{
+    padding-bottom: 22px;
+}
+
+.membership-page .register-birthday select
+{
+    padding: 10px 8px;
+    float: left;
+    margin-right: 5px;
+}
+
+.membership-page .register-birthday select#birthday_year
+{
+    margin-right: 30px;
+}
+
+.membership-page .fieldset-gender
+{
+    float: left;
+    display: flex;
+    padding-top: 10px;
+}
+
+.membership-page .fieldset-gender .form-check
+{
+    float: left;
+    margin-right: 20px;
+}
+
+.membership-page .checkout_page_header a.active,
+.membership-page .checkout_page_header a:hover
+{
+    color: #313132;
+}
+
+.membership-page .checkout_page_header a{
+    color: #888888;
+}
+
+/* Membership profile */
+.membership-profile ul.ul-profile-menu
+{
+    list-style-type:none;
+    width: 100%;
+    float: left;
+}
+
+.membership-profile ul.ul-profile-menu li
+{
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.membership-profile ul.ul-profile-menu li:first-child
+{
+    
+}
+
+.membership-profile .form-group
+{
+    float: left;
+}
+
+.membership-profile .profile-menu .profile-menu-title
+{
+    width: 100%;
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.membership-profile .profile-menu .profile-menu-title i
+{
+    position: relative;
+    top: -2px;
+    visibility: hidden;
+    color: #bababa;
+}
+
+.membership-profile .row-submit .form-group
+{
+    margin-top: 10px;
+}
+
+/* Membership Order */
+.membership-order .form-group
+{
+    margin-bottom: 0;
+}
+
+.membership-order .item-order
+{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.membership-order .item-order-head
+{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+}
+
+.membership-order .item-order-head .order-code
+{
+    font-weight: bold;
+    flex:1;
+}
+
+.membership-order .item-order-head .head-right
+{
+    align-items: flex-end;
+    flex: 0 auto;
+}
+
+.membership-order .item-order-product
+{
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.membership-order .item-order-product .product-thumb
+{
+    width: 120px;
+    flex: 0 0 auto;
+}
+
+.membership-order .item-order-product .product-thumb img
+{
+    width: 100%;
+}
+
+.membership-order .item-order-product p
+{
+    margin: 0;
+    padding: 2px 15px;
+    color: rgba(0,0,0,.6);
+}
+
+.membership-order .item-order-product .part-info
+{
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.membership-order .item-order-product .product-info
+{
+    flex: 1 1 auto;
+}
+
+.membership-order .item-order-product .part-info p.product-name
+{
+    font-size: 16px;
+    color: #333;
+}
+
+.membership-order .item-order-product .part-price
+{
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    width: 8rem;
+    align-items: flex-end;
+}
+
+.membership-order .item-order-product .part-price .price-original
+{
+    text-decoration: line-through;
+    color: #fb3c4a;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.membership-order .item-order-product .part-price .price-primary
+{
+    color: #333;   
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.membership-order .item-order-total
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.membership-order .item-order-total .item-total
+{
+    display: flex;
+    text-align: end;
+    align-items: flex-end;
+    justify-content: flex-end;
+    -webkit-box-pack: end;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.membership-order .item-order-total .item-total-value
+{
+    min-width: 150px;
+}
+
+.membership-order .item-order-total .total-order .item-total-value
+{
+    font-size: 18px;
+}
+
+@media(max-width:768px)
+{
+    .membership-page .font-sfui
+    {
+        font-size: 18px!important;
+        line-height: 22px!important;
+    }
+
+    .membership-page .fix-font
+    {
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    .membership-page .form-group
+    {
+        margin: 15px 0;
+        margin-bottom: 0;
+    }
+
+    .membership-order .item-order-product p
+    {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .checkout_page_header
+    {
+        padding-bottom: 15px!important;
+        margin-top: 15px!important;
+    }
+
+    .membership-page
+    {
+        padding-top: 0;
+    }
+
+    .membership-profile ul.ul-profile-menu
+    {
+        display:none;
+    }
+
+    .membership-profile.membership-order .form-group
+    {
+        margin-top: 0;
+    }
+
+    .membership-profile .checkout_page_header
+    {
+        margin-bottom: 0;
+        padding-bottom: 5px!important;
+        margin-top: 0!important;
+    }
+
+    .membership-profile.membership-order .checkout_page_header
+    {
+        margin-top: 15px!important;
+        border-bottom: none;
+    }
+
+    .membership-profile .profile-menu .profile-menu-title i
+    {
+        visibility: visible;
+    }
+
+    .membership-profile .row-submit .form-group
+    {
+        margin-top: 5px;
+    }
+}
+
+@media(max-width: 480px)
+{
+    .membership-order .item-order-product
+    {
+        display:block;
+    }
+
+    .membership-order .item-order-product .product-thumb
+    {
+        width: 80px;
+    }
+
+    .membership-order .item-order-product .part-price
+    {
+        align-items: flex-start;
+        padding-left: 95px;
+    }
+
+    .membership-order .item-order-head
+    {
+        flex-direction: column;
+    }
+}
