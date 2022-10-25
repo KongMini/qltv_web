@@ -86,5 +86,5 @@ $query = "SELECT a.*, count(b.parent) submenu, sum(ifnull(b.count,0)) total_coun
 	ORDER BY a.position, a.order ";
 $database->setQuery($query);
 $taxonomies = $database->loadObjectList();
-/** Print site content */
+/** Print site content dddd*/
 $ariacms->getBodyContent();
