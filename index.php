@@ -8,20 +8,7 @@ if (file_exists("configuration.php")) {
   echo "Missing Configuration File";
   exit();
 }
-// Include Language File
-if (file_exists("languages/lang." . $ariaConfig_language . ".php")) {
-  require_once("languages/lang." . $ariaConfig_language . ".php");
-} else {
-  echo "Missing Language File";
-  exit();
-}
-// Include Params File
-if (file_exists("params/params." . $ariaConfig_language . ".php")) {
-  require_once("params/params." . $ariaConfig_language . ".php");
-} else {
-  echo "Missing Params File";
-  exit();
-}
+
 // Include Database Controller
 if (file_exists("include/database.php")) {
   require_once("include/database.php");
@@ -53,7 +40,6 @@ if (file_exists("plugins/phpmailer/class.phpmailer.php")) {
 /** Setup Global variables */
 $database = new database($ariaConfig_server, $ariaConfig_username, $ariaConfig_password, $ariaConfig_database);
 $ariacms = new ariacms();
-$params = new params();
 $counter = new Counter();
 /** Get web menu  */
 $query = "SELECT a.*, count(b.parent) submenu 

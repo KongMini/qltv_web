@@ -1,7 +1,6 @@
 <?php
 global $database;
 global $ariacms;
-global $params;
 global $web_menus;
 global $type_menus;
 global $ariaConfig_template;
@@ -35,7 +34,7 @@ if ($_SESSION['orderCart']) {
 
                         if ($web_menu_1->submenu > 0) {
 
-                            echo '<li class="dropdown"><a href="javascript://" >' . $web_menu_1->{$params->title} . '</a>';
+                            echo '<li class="dropdown"><a href="javascript://" >' . $web_menu_1->title_vi . '</a>';
                             echo '<div class="sub-menu">';
                             echo '<ul class="dropdown-menu megamenu">';
                             foreach ($web_menus as $key2 => $web_menu_2) {
@@ -44,7 +43,7 @@ if ($_SESSION['orderCart']) {
                                 if ($web_menu_1->id == $web_menu_2->parent) {
                                     unset($web_menus[$key2]);
                                     $url_link = $ariacms->urlStandardizedMenu($web_menu_2->url_html);
-                                    echo '<li class="col-sm-3 item"><a class="dropdown-header" href="javascript://">' . $web_menu_2->{$params->title} . '</a>';
+                                    echo '<li class="col-sm-3 item"><a class="dropdown-header" href="javascript://">' . $web_menu_2->title_vi . '</a>';
                                     echo '<ul>';
                                     foreach ($web_menus as $key3 => $web_menu_3) {
 
@@ -61,7 +60,7 @@ if ($_SESSION['orderCart']) {
                             echo '</ul>';
                         } else {
                             unset($web_menus[$key1]);
-                            echo ' <li><a class="" href="' . $url_link . '" >' . $web_menu_1->{$params->title} . '</a></li>';
+                            echo ' <li><a class="" href="' . $url_link . '" >' . $web_menu_1->title_vi . '</a></li>';
                         }
                     }
                 }
@@ -129,7 +128,7 @@ if ($_SESSION['orderCart']) {
                     if ($web_menu_1->parent == $type_menus->main->id) {
 
                         $url_link = $ariacms->urlStandardizedMenu($web_menu_1->url_html);
-                        echo '<li class="dropdown"><a href="'.$url_link.'" >' . $web_menu_1->{$params->title} . '</a></li>';
+                        echo '<li class="dropdown"><a href="'.$url_link.'" >' . $web_menu_1->title_vi . '</a></li>';
 
                     }
                 }
@@ -204,7 +203,7 @@ if ($_SESSION['orderCart']) {
                         $url_link = $ariacms->urlStandardizedMenu($web_menu_1->url_html);
 
                         if ($web_menu_1->submenu > 0) {
-                            echo '<li><a class="submenu-child-toggle" href="javascript://">' . $web_menu_1->{$params->title} . '<i>+</i></a>';
+                            echo '<li><a class="submenu-child-toggle" href="javascript://">' . $web_menu_1->title_vi . '<i>+</i></a>';
                             echo '<div class="ul-submenu-m-wrap">';
                             echo '<ul class="ul-submenu-m-child">';
                             foreach ($web_menuscopy as $key2 => $web_menu_2) {
@@ -221,7 +220,7 @@ if ($_SESSION['orderCart']) {
                             }
                             echo '</ul>';
                         } else {
-                            echo ' <li><a href="' . $url_link . '" >' . $web_menu_1->{$params->title} . '</a></li>';
+                            echo ' <li><a href="' . $url_link . '" >' . $web_menu_1->title_vi . '</a></li>';
                         }
                     }
                 }

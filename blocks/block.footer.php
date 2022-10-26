@@ -43,7 +43,7 @@ $posts = $database->loadObjectList();
                                 <li class="heading-ft">
                                     <i class="arrow up">
                                     </i><i class="arrow down"></i>
-                                    <a href="javascript://"><?=$web_menu_1-> {$params->title} ?></a>
+                                    <a href="javascript://"><?=$web_menu_1-> title_vi ?></a>
                                 </li>
                         <?php
                         foreach ($web_menus as $key2 => $web_menu_2){
@@ -51,7 +51,7 @@ $posts = $database->loadObjectList();
                                 unset($web_menus[$key2]);
                                 $url_link = $ariacms->urlStandardizedMenu($web_menu_2->url_html); ?>
                                 <li class="child-ft">
-                                    <a href="<?=$web_menu_2->url_html ?>" alt="<?=$web_menu_2-> {$params->title} ?>"><?=$web_menu_2-> {$params->title} ?></a>
+                                    <a href="<?=$web_menu_2->url_html ?>" alt="<?=$web_menu_2-> title_vi ?>"><?=$web_menu_2-> title_vi ?></a>
                                 </li>
                                 <?php
                             }
