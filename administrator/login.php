@@ -68,28 +68,28 @@ if ($act == "doLogin") {
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="javascript:void(0);"><?=_SIGN_IN?></a>
+      <a href="javascript:void(0);">Đăng nhập</a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
       <form id="form_login" name="form_login" method="post" action="" class="form-signin">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Account..." autofocus name="txtUemail" id="txtUemail" required />
+          <input type="text" class="form-control" placeholder="Tài khoản..." autofocus name="txtUemail" id="txtUemail" required />
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="<?=_PASSWORD?>..." name="txtUpassword" id="txtUpassword" required />
+          <input type="password" class="form-control" placeholder="Mật khẩu..." name="txtUpassword" id="txtUpassword" required />
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
             <div class="checkbox icheck">
               <label>
-                <input type="checkbox" name="remember" id="remember" checked> <?=_REMEMBER_ME?>
+                <input type="checkbox" name="remember" id="remember" checked>Nhớ mật khẩu
               </label>
             </div>
           </div><!-- /.col -->
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-            <button type="submit" value="<?=_SIGN_IN?>" class="btn btn-primary btn-block btn-flat"><?=_SIGN_IN?></button>
+            <button type="submit" value="Đăng nhập" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
           </div><!-- /.col -->
         </div>
         <input type="hidden" name="action" value="doLogin" />

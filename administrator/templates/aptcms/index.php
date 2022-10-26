@@ -16,7 +16,7 @@ global $ariacms;
 			<div class="pull-right hidden-xs">
 				<b>Version</b> 2.0.0
 			</div>
-			Copyright &copy; 2020 by <strong>STeam.</strong> All rights reserved.
+			Copyright &copy; <?= date('Y')?> by <strong>LinhDDoox.</strong> All rights reserved.
 		</footer>
 	</div>
 	<div class="modal fade " id="showCNTT" role="dialog" aria-hidden="true">

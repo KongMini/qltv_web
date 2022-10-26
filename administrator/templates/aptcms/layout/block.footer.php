@@ -122,3 +122,104 @@
 		this.splice(this.indexOf(v) == -1 ? this.length : this.indexOf(v), 1);
 	}
 </script>
+
+
+<script>
+    const customColorPalette = [
+        {
+            color: 'hsl(4, 90%, 58%)',
+            label: 'Red'
+        },
+        {
+            color: 'hsl(340, 82%, 52%)',
+            label: 'Pink'
+        },
+        {
+            color: 'hsl(291, 64%, 42%)',
+            label: 'Purple'
+        },
+        {
+            color: 'hsl(262, 52%, 47%)',
+            label: 'Deep Purple'
+        },
+        {
+            color: 'hsl(231, 48%, 48%)',
+            label: 'Indigo'
+        },
+        {
+            color: 'hsl(207, 90%, 54%)',
+            label: 'Blue'
+        },
+
+        // ...
+    ];
+
+    ClassicEditor
+        .create( document.querySelector( '.ckeditor' ), {
+
+            toolbar: {
+                items: [
+
+                    'heading',
+                    'bold',
+                    'link',
+                    'italic',
+                    '|',
+                    'blockQuote',
+                    'alignment:left', 'alignment:right', 'alignment:center', 'alignment:justify',
+                    'insertTable',
+                    'undo',
+                    'redo',
+
+                    'bulletedList',
+                    'numberedList',
+                    'mediaEmbed',
+                    'fontBackgroundColor',
+                    'fontColor',
+                    'fontSize',
+                    'fontFamily',
+
+                ]
+            },
+            language: 'vi',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn', 'tableRow', 'mergeTableCells',
+                    'tableProperties', 'tableCellProperties'
+                ],
+
+                // Set the palettes for tables.
+                tableProperties: {
+                    borderColors: customColorPalette,
+                    backgroundColors: customColorPalette
+                },
+
+                // Set the palettes for table cells.
+                tableCellProperties: {
+                    borderColors: customColorPalette,
+                    backgroundColors: customColorPalette
+                }
+            },
+            licenseKey: '',
+
+
+        } )
+        .then( editor => {
+            window.editor = editor;
+
+        } )
+        .catch( error => {
+            console.error( 'Oops, something went wrong!' );
+            console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+            console.warn( 'Build id: v10wxmoi2tig-mwzdvmyjd96s' );
+            console.error( error );
+        } );
+
+</script>
