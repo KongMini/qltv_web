@@ -39,7 +39,7 @@
 		});
 	}
 
-	function check_value_exist(value, input, t, c, id_result, error) {
+	function check_value_exist(value, input, t, c, id_result, error, id_btn) {
 		var input = $(input).val();
 		var _url = "ajax/ajax.check_value_exist.php";
 		$.ajax({

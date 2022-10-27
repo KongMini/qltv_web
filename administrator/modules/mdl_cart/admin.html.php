@@ -16,6 +16,10 @@ class View
 	{
 		include("admin.html.cart_view.php");
 	}
+    static function cart_add($student)
+    {
+        include("admin.html.cart_add.php");
+    }
 	static function cart_edit($detail, $products)
 	{
 		include("admin.html.cart_edit.php");

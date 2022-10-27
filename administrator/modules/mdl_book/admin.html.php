@@ -26,7 +26,7 @@ class View
 		include("admin.html.book_add_view.php");
 	}
 
-	static function book_edit_view($taxonomies, $users, $term_taxonomy_id_list, $book_detail, $books, $images)
+	static function book_edit_view($users, $book_detail,$book_category, $book_author, $book_nxb)
 	{
 		include("admin.html.book_edit_view.php");
 	}

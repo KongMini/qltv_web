@@ -7,7 +7,9 @@ global $ariacms;
 			<div class="box">
 				<div class="box-header">
 					<h4 class="box-title">Danh sách đơn hàng</h4>
-				</div><!-- /.box-header -->
+                    <a href="index.php?module=<?php echo $_REQUEST['module'] ?>&task=cart_add"><button class="btn btn-warning pull-right">Thêm mới <i class="fa fa-plus"></i></button></a>
+
+                </div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
 						<thead>

@@ -32,4 +32,4 @@ $query = "SELECT * FROM " . $t . " WHERE " . $c . " = '" . $input . "' and " . $
 $database->setQuery($query);
 $checks = $database->loadObjectList();
 if ($checks) echo $error . " đã tồn tại.";
-else echo "";
+else echo "Hợp lệ";

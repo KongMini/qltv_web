@@ -14,18 +14,19 @@ global $ariacms;
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="col-md-1">
-									<span class="form-control btn btn-danger hide-price">Xóa mục đã chọn</span>
-								</th>
-								<th class="col-md-2">STT</th>
-								<th class="col-md-3">Tiêu đề</th>
-								<th class="col-md-1">Người tạo</th>
-								<th class="col-md-2">Danh mục</th>
-								<th class="col-md-1">Tác giả</th>
-								<th class="col-md-1">NXB</th>
-								<th class="col-md-1">Giá sách</th>
-								<th class="col-md-1">Số lượng</th>
-								<th class="col-md-1">Thao tác</th>
+<!--								<th class="col-md-1">-->
+<!--									<span class="form-control btn btn-danger hide-price">Xóa mục đã chọn</span>-->
+<!--								</th>-->
+								<th >STT</th>
+								<th >Mã sách</th>
+								<th >Tên sách</th>
+								<th >Người tạo</th>
+								<th >Danh mục</th>
+								<th >Tác giả</th>
+								<th >NXB</th>
+								<th >Giá sách</th>
+								<th >Số lượng</th>
+								<th >Thao tác</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -33,9 +34,9 @@ global $ariacms;
 								<input type="hidden" name="module" id="module" value="<?php echo $_REQUEST['module'] ?>" />
 								<input type="hidden" name="task" id="task" value="book_view" />
 								<tr>
-									<td>
-										<span class="checkAll btn btn-primary form-control">Check All</span>
-									</td>
+<!--									<td>-->
+<!--										<span class="checkAll btn btn-primary form-control">Check All</span>-->
+<!--									</td>-->
 									<td>
 										<select name="page_size" id="page_size" class="form-control" onchange="this.form.submit();">
 											<option value="">Hiển thị</option>
@@ -48,7 +49,8 @@ global $ariacms;
 											<option value="999999999" <?php echo ($_REQUEST['page_size'] == '999999999') ? 'selected="selected"' : '' ?>>- - Tất cả - -</option>
 										</select>
 									</td>
-									<td><input class="form-control" name="keysearch" id="keysearch" type="text" value="<?php echo $_REQUEST['keysearch'] ?>" /></td>
+									<td><input class="form-control" name="masach" id="masach" type="text" value="<?php echo $_REQUEST['masach'] ?>" /></td>
+									<td><input class="form-control" name="tensach" id="tensach" type="text" value="<?php echo $_REQUEST['tensach'] ?>" /></td>
 									<td>
 										<select class="form-control select2" id="user_created" name="user_created">
 											<option value="">- Chọn -</option>
@@ -114,12 +116,13 @@ global $ariacms;
 								$i++;
 							?>
 								<tr class="<?php echo ($i % 2 == 1) ? 'bg-gray-light' : ''; ?> valign-middle">
-									<td style="text-align: center;">
-										<input type="checkbox" name="check-price" value="<?= $value->id ?>" />
-									</td>
+<!--									<td style="text-align: center;">-->
+<!--										<input type="checkbox" name="check-price" value="<?= $value->id ?>" />-->
+<!--									</td>-->
 									<td>
 										<?php echo $i ?>
 									</td>
+									<td><?php echo $value->masach ?></td>
 									<td><?php echo $value->tensach ?></td>
 									<td><?php echo $value->fullname ?></td>
 									<td><?php echo $value->tieude ?></td>

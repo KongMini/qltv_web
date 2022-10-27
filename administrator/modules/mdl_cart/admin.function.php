@@ -30,6 +30,32 @@ class Model
 		View::cart_view($carts, $totalRows['total'], $maxRows, $curPg);
 	}
 
+	static function cart_add(){
+        global $database;
+        global $ariacms;
+        switch ($_POST["submitCart"]) {
+            case "cart_edit":
+                $row = new stdClass;
+                $row->id 		= $_REQUEST["id"];
+                foreach ($_POST as $key => $value) {
+                    if ($key != "submitCart")
+                        $row->$key = $value;
+                }
+                $row->date_updated = time();
+                if ($database->updateObject('e4_order', $row, 'id'))
+                    $ariacms->redirect("", "javascript:history.back()");
+                else echo $database->stderr();
+                break;
+
+            default:
+                $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
+                $database->setQuery($query);
+                $student = $database->loadObjectList();
+
+                View::cart_add($student);
+                break;
+        }
+    }
 	static function cart_edit()
 	{
 		global $database;
