@@ -18,42 +18,47 @@ class Model
 		$curRow = ($curPg - 1) * $maxRows;
 		$limit = " LIMIT " . $curRow . "," . $maxRows . " ";
 
-		$query = "SELECT a.*, SUM(b.quantity * b.price) total FROM e4_order a LEFT JOIN e4_order_detail b ON a.id = b.order_id 
-		GROUP BY a.id
-		ORDER BY a.id desc " . $limit;
+		$query = "SELECT a.time_update, b.* FROM `e4_muonsach` a
+                LEFT JOIN e4_users b ON a.id_sinhvien = b.id
+                GROUP BY a.id_sinhvien 
+                ORDER BY time_update ASC " . $limit;
 		$database->setQuery($query);
 		$carts = $database->loadObjectList();
 
-		$query = "SELECT COUNT(*) total FROM e4_order a ";
+		$query = "SELECT b.id FROM `e4_muonsach` a
+                LEFT JOIN e4_users b ON a.id_sinhvien = b.id
+                GROUP BY a.id_sinhvien 
+                ORDER BY time_update DESC";
 		$database->setQuery($query);
-		$totalRows = $database->loadRow();
-		View::cart_view($carts, $totalRows['total'], $maxRows, $curPg);
+		$totalRows = $database->loadObjectList();
+
+		View::cart_view($carts, count($totalRows), $maxRows, $curPg);
 	}
 
 	static function cart_add(){
         global $database;
         global $ariacms;
-        switch ($_POST["submitCart"]) {
-            case "cart_edit":
+        if($_POST["submitCart"]) {
+            $id_sinhvien = $_REQUEST['id_sinhvien'];
+            $sach = $_REQUEST['id_sach'];
+            $time = time();
+            foreach ($sach as $value){
                 $row = new stdClass;
-                $row->id 		= $_REQUEST["id"];
-                foreach ($_POST as $key => $value) {
-                    if ($key != "submitCart")
-                        $row->$key = $value;
-                }
-                $row->date_updated = time();
-                if ($database->updateObject('e4_order', $row, 'id'))
-                    $ariacms->redirect("", "javascript:history.back()");
-                else echo $database->stderr();
-                break;
+                $row->id = null;
+                $row->id_sinhvien = $id_sinhvien;
+                $row->id_sach = $value['id_sach'];
+                $row->soluong = $value['soluong'];
+                $row->time_update = $time;
+                $database->insertObject('e4_muonsach', $row, 'id');
+            }
+            $ariacms->redirect("Tạo mới thành công", "index.php?module=cart");
+        }else{
+            $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
+            $database->setQuery($query);
+            $student = $database->loadObjectList();
 
-            default:
-                $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
-                $database->setQuery($query);
-                $student = $database->loadObjectList();
+            View::cart_add($student);
 
-                View::cart_add($student);
-                break;
         }
     }
 	static function cart_edit()

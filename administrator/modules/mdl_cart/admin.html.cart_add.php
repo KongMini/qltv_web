@@ -1,13 +1,19 @@
 <?php
 global $ariacms;
+global $database;
+
+$query = "SELECT * FROM `e4_book`   ORDER BY id DESC";
+$database->setQuery($query);
+$books = $database->loadObjectList();
 ?>
-<section class="content">
+<input type="hidden" id="id_danhsachmuon" value="0">
+<section class="content" id="phieumuon">
     <div class="row">
         <div class="col-md-4">
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <h3 class="profile-username text-center">Phiếu Mượn</h3>
+                    <h3 class="profile-username text-center">Thông tin sinh viên</h3>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
@@ -19,103 +25,23 @@ global $ariacms;
                                 <?php }?>
                             </select>
 
+                            <img src="../templates/emac/images/loading-icon.gif" style="width: 50%;display: none" class="text-center" id="loading" >
+
                         </li>
-                        <li class="list-group-item">
-                            Điện thoại
-                            <a class="pull-right"><?php echo $detail['phone'] ?></a>
-                        </li>
-                        <li class="list-group-item">
-                            Email
-                            <a class="pull-right"><?php echo $detail['email'] ?></a>
-                        </li>
-                        <li class="list-group-item">
-                            Địa chỉ
-                            <a class="pull-right"><?php echo $detail['address'] ?></a>
-                        </li>
-                        <li class="list-group-item">
-                            Ghi chú
-                            <a class="pull-right"><?php echo $detail['content'] ?></a>
-                        </li>
+
                     </ul>
 
-                    <form method="post" action="index.php?module=cart&task=cart_edit&id=<?= $detail['id'] ?>">
-                        <div class="form-group">
-                            <label for="comment">Ghi chú quản lý:</label>
-                            <textarea class="form-control" rows="3" name="comment" id="comment" placeholder="Nội dung ghi chú..."><?= $detail['comment'] ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Trạng thái xử lý:</label>
-                            <select id="status" name="status" class="form-control">
-                                <option <?= ($detail['status'] == 'new') ? 'selected' : ''; ?> value="new">Mới tạo</option>
-                                <option <?= ($detail['status'] == 'processed') ? 'selected' : ''; ?> value="processed">Đã xử lý</option>
-                                <option <?= ($detail['status'] == 'cancel') ? 'selected' : ''; ?> value="cancel">Hủy đơn</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary " name="submitCart" value="cart_edit">Cập nhật</button>
-                        </div>
-                    </form>
+
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col -->
-
         <div class="col-md-8">
             <div class="box">
                 <div class="box-header">
                     <h4 class="pull-left">Danh sách mượn - trả sách</h4>
                     <h4 class="pull-right text-danger">Tổng tiền phải đóng: <?= $ariacms->formatPrice($detail['total']) ?></h4>
                 </div><!-- /.box-header -->
-                <div class="box-body table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th class="col-md-2">Mã sách</th>
-                            <th class="col-md-4">Tên sách</th>
-                            <th class="col-md-2">Trạng thái</th>
-                            <th class="col-md-2">Tổng cộng</th>
-                            <th>Thao tác</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $i = 0;
-                        $sum = 0;
-                        $total = 0;
-                        foreach ($products as $product) {
-                            $i++;
-                            $total  += $sum;
-                            ?>
-                            <form method="post" action="index.php?module=cart&task=cart_edit&id_detail=<?= $product->id ?>">
-                                <input type="hidden" name="submitCart" value="cart_edit_detail">
-                                <tr class="<?= ($i % 2 == 1) ? 'bg-gray-light' : ''; ?> valign-middle">
-                                    <td><?= $i ?></td>
-                                    <td>
-                                        <a href="<?= $ariacms->actual_link ?>chi-tiet/<?= $product->url_part ?>.html" target="_blank">
-                                            <img src="<?= $product->image ?>" style="height:100px" />
-                                            <?= $product->title_vi ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <input class="form-control" name="price" type="number" value="<?= $product->price ?>" onchange="this.form.submit();" />
-                                    </td>
-                                    <td>
-                                        <input class="form-control" type="number" name="quantity" value="<?= $product->quantity ?>" onchange="this.form.submit();" />
-                                    </td>
-                                    <td><?= $ariacms->formatPrice($product->quantity * $product->price)  ?></td>
-                                    <td>
-                                        <a href="?module=cart&task=cart_delete&id_detail=<?= $product->id ?>" onclick="return confirmAction();"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
-                                        <input class="hidden" name="submitDetail" type="submit">
-                                    </td>
-                                </tr>
-                            </form>
-                            <?php
-                        }
-                        ?>
-
-                        </tbody>
-                    </table>
-                </div><!-- /.box-body -->
+                <!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -124,5 +50,68 @@ global $ariacms;
 <script>
     function getDataStudent(){
         var id = document.getElementById("sinhvien").value;
+        var _url = "ajax/cart/ajax.cart_get_infor.php";
+        $("#sinhvien").disabled = true;
+        document.getElementById('sinhvien').disabled = true;
+        document.getElementById('loading').style.display = 'block';
+        $.ajax({
+            url: _url,
+            data: "id=" + id,
+            cache: false,
+            context: document.body,
+            success: function(data) {
+                $('#phieumuon').html(data);
+                $('.select2').select2();
+                document.getElementById('loading').style.display = 'none';
+                $("#sinhvien").disabled = false;
+
+                document.getElementById('id_danhsachmuon').value = 1;
+            }
+        });
+    }
+    function chooseBook(id){
+        var id_book = document.getElementById('idsach'+id).value;
+        var _url = "ajax/cart/ajax.cart_get_book.php";
+        $.ajax({
+            url: _url,
+            data: "id=" + id + '&id_book=' + id_book,
+            cache: false,
+            context: document.body,
+            success: function(data) {
+                $('#row'+id).html(data);
+                $('.select2').select2();
+            }
+        });
+    }
+
+
+    function addRow(){
+        var id = document.getElementById('id_danhsachmuon').value * 1.0;
+        $("#table_frames")
+            .append('<tr class="valign-middle" id ="row'+ id +'">' +
+                '<td>' +(id + 1)+'</td>' +
+                '<td>'+
+                    '<select id="idsach'+id +'" name="id_sach[]" class="form-control select2" onchange="chooseBook('+id+')">' +
+                        '<option value="">-Chọn sách-</option>' +
+                        '<?php foreach ($books as $value){
+                            echo '<option value="' . $value->id . '"> ' .$value->masach .'-'. $value->tensach . '</option>';
+                        }?>' +
+                    '</select>' +
+                '</td>' +
+                '<td></td>' +
+                '<td></td>' +
+                '<td></td>' +
+                '<td></td>' +
+                '<td> <a onclick="delete_img('+id+')"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a></td>' +
+                '</tr>');
+        $('.select2').select2();
+        document.getElementById('id_danhsachmuon').value = id + 1;
+    }
+
+    function delete_img(id){
+        if(confirm("Bạn có muốn mục này")){
+            $("#"+id).remove();
+            document.getElementById('remove').value  += ","+id;
+        }
     }
 </script>

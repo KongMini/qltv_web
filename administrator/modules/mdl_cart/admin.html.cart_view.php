@@ -6,7 +6,7 @@ global $ariacms;
 		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h4 class="box-title">Danh sách đơn hàng</h4>
+					<h4 class="box-title">Danh sách Mượn trả</h4>
                     <a href="index.php?module=<?php echo $_REQUEST['module'] ?>&task=cart_add"><button class="btn btn-warning pull-right">Thêm mới <i class="fa fa-plus"></i></button></a>
 
                 </div><!-- /.box-header -->
@@ -15,13 +15,9 @@ global $ariacms;
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Gửi lúc</th>
-								<th>Tên KH</th>
-								<th>Điện thoại / Email</th>
-								<th>Địa chỉ</th>
-								<th>Nội dung</th>
-								<th>Tổng tiền</th>
-								<th>Trạng thái</th>
+								<th>Mã sinh viên</th>
+								<th>Tên sinh viên</th>
+								<th>Thời gian mượn gần nhất</th>
 								<th>Thao tác</th>
 							</tr>
 						</thead>
@@ -33,14 +29,10 @@ global $ariacms;
 							?>
 								<tr class="<?= ($i % 2 == 1) ? 'bg-gray-light' : ''; ?> valign-middle">
 									<td><?= $i ?></td>
-									<td><?= $ariacms->unixToDate($cart->date_created, '/') ?> <?= $ariacms->unixToTime($cart->date_created, ':') ?></td>
-									<td><?= $cart->name ?></td>
-									<td><?= $cart->phone ?><br /><?= $cart->email ?></td>
-									<td><?= $cart->address ?></td>
-									<td><?= $cart->content ?></td>
-									<td><?= $ariacms->formatPrice($cart->total) ?></td>
-									<td><?= ($cart->status == 'new') ? 'Mới tạo' : (($cart->status == 'processed') ? 'Đã xử lý' : (($cart->status == 'cancel') ? 'Đã hủy đơn' : 'Không xác định')) ?></td>
-									<td><?= Model::cart_view_link($cart) ?></td>
+									<td><?= $cart->masv ?></td>
+									<td><?= $cart->fullname ?></td>
+                                    <td><?= Date("H:i:s d/m/Y", $cart->time_update )?></td>
+								<td><?= Model::cart_view_link($cart) ?></td>
 								</tr>
 							<?php
 							}

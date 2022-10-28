@@ -5,7 +5,7 @@ class View
 	{
 ?>
 		<section class="content-header">
-			<h1>Quản lý đơn hàng</h1>
+			<h1>Quản lý mượn trả</h1>
 			<ol class="breadcrumb">
 				<li><a class="btn btn-warning" href="index.php?module=<?php echo $_REQUEST['module'] ?>"><i class="fa fa-list"></i> Danh sách đơn hàng</a></li>
 			</ol>
