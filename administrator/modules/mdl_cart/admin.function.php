@@ -49,8 +49,15 @@ class Model
                 $row->id_sach = $value['id_sach'];
                 $row->soluong = 1;
                 $row->time_update = $time;
-                $database->insertObject('e4_muonsach', $row, 'id');
+                if($database->insertObject('e4_muonsach', $row, 'id')){
+
+                    /**Cập nhật số lượng sách*/
+                    $query = "UPDATE e4_book SET soluong = soluong - 1 WHERE id=".$value['id_sach'];
+                    $database->setQuery($query);
+                    $database->query();
+                }
             }
+
             $ariacms->redirect("Tạo mới thành công", "index.php?module=cart");
         }else{
             $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
@@ -145,6 +152,16 @@ class Model
 
                     }
 
+                    /** Check có trạng thái trả sách */
+                    if($muonsach_list[$value]['status_new'] == 1){
+
+                        /**Cập nhật số lượng sách*/
+                        $query = "UPDATE e4_book SET soluong = soluong +  1 WHERE id=".$id_user;
+                        $database->setQuery($query);
+                        $database->query();
+
+                    }
+
                 }
             }
             $ariacms->redirect("Cập nhật thành công", "?module=cart&task=cart_edit&id=".$id_user);
@@ -165,7 +182,7 @@ class Model
             $database->setQuery($query);
             $detail = $database->loadRow();
 
-            $query = "SELECT a.*,c.masach,c.tensach,c.image,c.giasach FROM `e4_muonsach` a 
+            $query = "SELECT a.*, c.id AS id_sach, c.masach,c.tensach,c.image,c.giasach FROM `e4_muonsach` a 
             LEFT JOIN e4_book c ON a.id_sach = c.id 
             WHERE a.id_sinhvien = {$id_user} 
             ORDER BY a.id DESC;";

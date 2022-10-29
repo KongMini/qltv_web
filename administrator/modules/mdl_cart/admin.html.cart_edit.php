@@ -76,6 +76,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                                         <input type="hidden" name="muonsach[<?= $i - 1?>][id]" value="<?= $value -> id?>">
                                         <input type="hidden" name="muonsach[<?= $i - 1?>][status_old]" value="<?= $value -> status?>">
                                         <input type="hidden" name="muonsach[<?= $i - 1?>][giasach]" value="<?= $value -> giasach?>">
+                                        <input type="hidden" name="muonsach[<?= $i - 1?>][id_sach]" value="<?= $value -> id_sach?>">
                                         <td><?=$i?></td>
                                         <td>
                                             <?= $value->masach .'<br>'.$value->tensach ?>

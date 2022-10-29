@@ -38,7 +38,7 @@ $query = "SELECT * FROM e4_users WHERE id=" .$id_user;
 $database->setQuery($query);
 $detail = $database->loadRow();
 
-$query = "SELECT a.*,c.masach,c.tensach,c.image,c.giasach FROM `e4_muonsach` a 
+$query = "SELECT a.*, c.id AS id_sach, c.masach,c.tensach,c.image,c.giasach FROM `e4_muonsach` a 
             LEFT JOIN e4_book c ON a.id_sach = c.id 
             WHERE a.id_sinhvien = {$id_user} 
             ORDER BY time_update DESC;";
@@ -50,7 +50,7 @@ $namhientai = date('Y');
 $date_start = strtotime($namhientai.'-1-1');
 $date_end   = strtotime(($namhientai+1).'-1-1');
 
-echo $query = "SELECT * FROM `e4_thanhtoan` WHERE (time_update > {$date_start} AND time_update < {$date_end}) AND id_user =  ". $id_user;
+$query = "SELECT * FROM `e4_thanhtoan` WHERE (time_update > {$date_start} AND time_update < {$date_end}) AND id_user =  ". $id_user;
 $database->setQuery($query);
 $check = $database->loadObjectList();
 
@@ -185,6 +185,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                                     <input type="hidden" name="muonsach[<?= $i - 1?>][id]" value="<?= $value -> id?>">
                                     <input type="hidden" name="muonsach[<?= $i - 1?>][status_old]" value="<?= $value -> status?>">
                                     <input type="hidden" name="muonsach[<?= $i - 1?>][giasach]" value="<?= $value -> giasach?>">
+                                    <input type="hidden" name="muonsach[<?= $i - 1?>][id_sach]" value="<?= $value -> id_sach?>">
                                     <td><?=$i?></td>
                                     <td>
                                         <?= $value->masach .'<br>'.$value->tensach ?>

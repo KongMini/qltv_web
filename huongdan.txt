@@ -1,0 +1,17 @@
+config host
+
+Listen 127.0.0.1:8400
+<VirtualHost 127.0.0.1:8400>
+  DocumentRoot "D:/xampp74/htdocs/dchic/"
+  DirectoryIndex index.php
+  <Directory "D:/xampp74/htdocs/dchic/">
+    AllowOverride All
+    Allow from All
+    Options  All
+    Require all granted
+  </Directory>
+
+</VirtualHost>
+
+config db
+tao database ten la thuvien
