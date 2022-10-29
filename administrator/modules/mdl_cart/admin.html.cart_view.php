@@ -17,7 +17,7 @@ global $ariacms;
 								<th>STT</th>
 								<th>Mã sinh viên</th>
 								<th>Tên sinh viên</th>
-								<th>Thời gian mượn gần nhất</th>
+								<th>Thời gian mượn</th>
 								<th>Thao tác</th>
 							</tr>
 						</thead>
