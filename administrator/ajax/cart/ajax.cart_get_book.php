@@ -58,8 +58,7 @@ $books = $database->loadObjectList();
     <td>
        Mược sách
     </td>
-    <td> <input class="form-control" type="number" name="id_sach[<?=$id?>][soluong]" value="1" min="1" max="<?=$book['soluong']?>" />
-   </td>
+    <td> 1 </td>
     <td>
        <a onclick="delete_img(<?= $id?>)"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
     </td>

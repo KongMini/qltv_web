@@ -7,8 +7,12 @@ global $ariacms;
 			<div class="box">
 				<div class="box-header">
 					<h4 class="box-title">Danh sách Mượn trả</h4>
-                    <a href="index.php?module=<?php echo $_REQUEST['module'] ?>&task=cart_add"><button class="btn btn-warning pull-right">Thêm mới <i class="fa fa-plus"></i></button></a>
+                    &nbsp;
+                    <a href="index.php?module=<?php echo $_REQUEST['module'] ?>&task=cart_mail"><button class="btn btn-danger pull-right"> Gửi mail thông báo sách quá hạn</button></a>
+                    &nbsp;
 
+                    <a href="index.php?module=<?php echo $_REQUEST['module'] ?>&task=cart_add"><button class="btn btn-warning pull-right">Thêm mới <i class="fa fa-plus"></i></button></a>
+                    &nbsp;
                 </div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">

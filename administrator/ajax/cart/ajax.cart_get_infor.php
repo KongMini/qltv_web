@@ -44,6 +44,18 @@ $query = "SELECT a.*,c.masach,c.tensach,c.image,c.giasach FROM `e4_muonsach` a
             ORDER BY time_update DESC;";
 $database->setQuery($query);
 $lists = $database->loadObjectList();
+
+/** Check thanh toán mượn sách trong năm hiện tại hay chưa */
+$namhientai = date('Y');
+$date_start = strtotime($namhientai.'-1-1');
+$date_end   = strtotime(($namhientai+1).'-1-1');
+
+echo $query = "SELECT * FROM `e4_thanhtoan` WHERE (time_update > {$date_start} AND time_update < {$date_end}) AND id_user =  ". $id_user;
+$database->setQuery($query);
+$check = $database->loadObjectList();
+
+$checkthanhtoan = True;
+if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
 ?>
 <section class="content" id="phieumuon">
     <div class="row">
@@ -108,27 +120,30 @@ $lists = $database->loadObjectList();
 
                             <tbody id="table_frames">
 
-                                    <tr class="valign-middle" id="row0">
-                                        <td>1</td>
-                                        <td>
-                                            <select id="idsach0" name="id_sach[]" class="form-control select2" onchange="chooseBook(0)" required>
-                                                <option value="">-Chọn sách-</option>
-                                                <?php foreach ($books as $value){?>
-                                                    <option  value="<?= $value -> id?>"><?= $value -> masach .'-'. $value -> tensach?></option>
-                                                <?php }?>
-                                            </select>
-                                        </td>
-                                        <td></td>
-                                        <td> </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a onclick="delete_img(0)"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
-                                        </td>
-                                    </tr>
+                            <tr class="valign-middle" id="row0">
+                                <td>1</td>
+                                <td>
+                                    <select id="idsach0" name="id_sach[]" class="form-control select2" onchange="chooseBook(0)" required>
+                                        <option value="">-Chọn sách-</option>
+                                        <?php foreach ($books as $value){?>
+                                            <option  value="<?= $value -> id?>"><?= $value -> masach .'-'. $value -> tensach?></option>
+                                        <?php }?>
+                                    </select>
+                                </td>
+                                <td></td>
+                                <td> </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a onclick="delete_img(0)"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-success pull-right" name="submitCart" value="submit" type="submit">Thêm vào danh sách</button>
+                        <?php if(!$checkthanhtoan){?>
+                            <h4 class="pull-left text-danger">Sinh viên cần thanh toán tiền mượn sách năm <?= date('Y')?> hoặc tiền nợ sách báo mất để thực hiện mượn sách</h4>
+                        <?php }?>
+                        <button class="btn btn-success pull-right" name="submitCart" value="submit" type="submit" <?php if(!$checkthanhtoan) echo'disabled'?>>Thêm vào danh sách</button>
                     </form>
                 </div><!-- /.box-body -->
             </div>
@@ -136,65 +151,71 @@ $lists = $database->loadObjectList();
             <div class="box">
                 <div class="box-header">
                     <h4 class="pull-left">Danh sách mượn - trả sách</h4>
-                    <h4 class="pull-right text-danger">Tổng tiền phải đóng: <?= $ariacms->formatPrice($detail['total']) ?></h4>
+                    <h4 class="pull-right text-danger">Tổng tiền nợ sách báo mất: <?= $ariacms->formatPrice($detail['notiensach']) ?></h4>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Mã sách/Tên sách</th>
-                            <th >Hình ảnh</th>
-                            <th >Giá sách</th>
-                            <th >Trạng thái</th>
-                            <th >Số lượng</th>
-                            <th >Thời gian</th>
-                            <th>Thao tác</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $i = 0;
-                        $sum = 0;
-                        $total = 0;
-                        foreach ($lists as $value) {
-                            $i++;
-                            $total  += $sum;
-                            ?>
-                            <form method="post" action="index.php?module=cart&task=cart_edit&id_detail=<?= $value->id ?>">
-                                <input type="hidden" name="submitCart" value="cart_edit_detail">
+                    <form method="post" action="index.php?module=cart&task=cart_edit&id_detail=<?= $value->id ?>">
+                        <button class="btn btn-primary pull-right" type="submit" name="submit" value="update">Cập nhật thay đổi</i></button>
+                        <input type="hidden" name="submitCart" value="cart_edit_detail">
+                        <input type="" class="form-control" name="id_change" value="" id="id_change" placeholder="Danh sách thay đổi trạng thái"  >
+                        <input type="hidden" name="id_user" value="<?=$detail['id']?>" id="id_user" >
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã sách/Tên sách</th>
+                                <th >Hình ảnh</th>
+                                <th >Giá sách</th>
+                                <th >Trạng thái</th>
+                                <th >Số lượng</th>
+                                <th >Thời gian</th>
+                                <!--                                <th>Thao tác</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $i = 0;
+                            $sum = 0;
+                            $total = 0;
+                            foreach ($lists as $value) {
+                                $i++;
+                                $total  += $sum;
+                                ?>
                                 <tr class="<?= ($i % 2 == 1) ? 'bg-gray-light' : ''; ?> valign-middle">
+                                    <input type="hidden" name="muonsach[<?= $i - 1?>][id]" value="<?= $value -> id?>">
+                                    <input type="hidden" name="muonsach[<?= $i - 1?>][status_old]" value="<?= $value -> status?>">
+                                    <input type="hidden" name="muonsach[<?= $i - 1?>][giasach]" value="<?= $value -> giasach?>">
                                     <td><?=$i?></td>
                                     <td>
                                         <?= $value->masach .'<br>'.$value->tensach ?>
                                     </td>
                                     <td>
-                                            <img src="<?= $value->image ?>" style="height:100px" />
+                                        <img src="<?= $value->image ?>" style="height:100px" />
                                     </td>
                                     <td>
                                         <?= $value->giasach ?>
                                     </td>
                                     <td>
-                                        <select id="status" name="status" class="form-control select2">
+                                        <select id="status" name="muonsach[<?= $i - 1?>][status_new]" class="form-control select2" onchange="change(<?= $i - 1?>)">
                                             <option <?= ($value->status == '0') ? 'selected' : ''; ?> value="0">Đang mượn</option>
-                                            <option <?= ($value->status == '1') ? 'selected' : ''; ?> value="1">Đã trã</option>
+                                            <option <?= ($value->status == '1') ? 'selected' : ''; ?> value="1">Đã trả</option>
                                             <option <?= ($value->status == '2') ? 'selected' : ''; ?> value="2">Báo mất</option>
                                         </select>
                                     </td>
                                     <td><?= $value->soluong ?></td>
                                     <td><?= Date("H:i:s d/m/Y", $value->time_update ) ?></td>
-                                    <td>
-                                        <a href="?module=cart&task=cart_delete&id_detail=<?= $value->id ?>" onclick="return confirmAction();"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
-                                        <input class="hidden" name="submitDetail" type="submit">
-                                    </td>
+                                    <!--td>
+                                            <a href="?module=cart&task=cart_delete&id_detail=<?= $value->id ?>" onclick="return confirmAction();"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
+                                            <input class="hidden" name="submitDetail" type="submit">
+                                        </td -->
                                 </tr>
-                            </form>
-                            <?php
-                        }
-                        ?>
-
-                        </tbody>
-                    </table>
+                                <?php
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary pull-right" type="submit" name="submit" value="update">Cập nhật thay đổi</i></button>
+                    </form>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div><!-- /.col -->

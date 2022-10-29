@@ -11,11 +11,6 @@ global $ariacms;
 					</div><!-- /.box-header -->
 					<div class="box-body ">
 						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a aria-expanded="true" href="#info_general" data-toggle="tab">Thông tin cơ bản <font class="text-red">*</font></a></li>
-								<li><a aria-expanded="false" href="#info_document" data-toggle="tab">Thông tin mở rộng</a></li>
-								<li class="pull-right"><button type="submit" class="btn btn-primary" name="submit" value="user_add">Cập nhật</button></li>
-							</ul>
 							<div class="tab-content">
 								<div class="active tab-pane" id="info_general">
 									<div class="form-group">
@@ -40,14 +35,12 @@ global $ariacms;
 										</div>
 									</div>
 
-									<div class="form-group">
+									<div class="form-group ">
 										<label for="user_type" class="col-sm-6 col-md-6 col-lg-6">Tại khoản hệ thống <span class="text-red">*</span></label>
 										<label for="permission" class="col-sm-6 col-md-6 col-lg-6">Nhóm quyền <span class="text-red">*</span></label>
 										<div class="col-sm-6 col-md-6 col-lg-6">
 											<select class="form-control" name="user_type" id="user_type" required>
-												<option value="">Vui lòng chọn</option>
-												<option value='admin'>Admin Web</option>
-												<option value='public'>Public Web</option>
+												<option value='admin' selected>Admin Web</option>
 											</select>
 										</div>
 										<div class="col-sm-6 col-md-6 col-lg-6">
@@ -62,7 +55,7 @@ global $ariacms;
 										</div>
 									</div>
 
-									<div class="form-group">
+									<div class="form-group hidden">
 										<label for="status_public" class="col-sm-6 col-md-6 col-lg-6">Nhóm người dùng</label>
 										<label for="publish" class="col-sm-6 col-md-6 col-lg-6">Trạng thái sử dụng</label>
 										<div class="col-sm-6 col-md-6 col-lg-6">
@@ -73,7 +66,7 @@ global $ariacms;
 										<div class="col-sm-6 col-md-6 col-lg-6">
 											<select class="form-control" name="publish" id="publish">
 												<option value='0'>Chưa kích hoạt</option>
-												<option value='1'>Đang sử dụng</option>
+												<option value='1' selected>Đang sử dụng</option>
 											</select>
 										</div>
 									</div>
@@ -83,77 +76,27 @@ global $ariacms;
 											<label for="meta_brief">Giới thiệu ngắn</label>
 											<textarea class="form-control" rows="5" name="meta_brief" id="meta_brief" placeholder="Tóm tắt giới thiệu..."></textarea>
 										</div>
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<label for="image_url">Ảnh đại diện
-													<img style="height:75px;" id="newImg" txthide="image_url" class="choiceImg cursor margin" src="templates/aptcms/dist/img/no-image.png" onclick="fcall.fcChoiceImg(this);" data-toggle="tooltip" title="Nhấn để chọn ảnh đại diện" />
-											</label>
-											<input class="form-control" id="image_url" name="image_url" type="text" placeholder="Đường dẫn ảnh..." value="" />
-										</div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+
+                                            <label for="image_url">Ảnh đại diện
+                                                <img style="height:75px;" id="newimage" txthide="image" class="choiceImg cursor margin" src="templates/aptcms/dist/img/noimage.png"  onclick="openPopupImg('image')" data-toggle="tooltip" title="Nhấn để chọn ảnh đại diện"  />
+                                            </label>
+                                            <input class="form-control " id="image" name="image_url" type="text" placeholder="Đường dẫn ảnh..." value="" />
+                                        </div>
 									</div>
 
+                                    <div class="form-group">
+                                        <label for="mobifone" class="col-sm-6 col-md-6 col-lg-6">Điện thoại</label>
+                                        <label for="facebook" class="col-sm-6 col-md-6 col-lg-6">Facebook</label>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-control" name="mobifone" id="mobifone" type="text" value="" />
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <input class="form-control" name="facebook" id="facebook" type="text" value="" />
+                                        </div>
+                                    </div>
 								</div>
-
-								<div class=" tab-pane" id="info_document">
-									<div class="form-group">
-										<label for="mobifone" class="col-sm-6 col-md-6 col-lg-6">Điện thoại</label>
-										<label for="facebook" class="col-sm-6 col-md-6 col-lg-6">Facebook</label>
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<input class="form-control" name="mobifone" id="mobifone" type="text" value="" />
-										</div>
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<input class="form-control" name="facebook" id="facebook" type="text" value="" />
-										</div>
-									</div>
-
-									<!-- <div class="form-group">
-										<div class="col-md-12">
-											<label>Gắn thẻ - tags
-												<input value="" type="text" placeholder="Thêm tags..." id="tags_title">
-												<button type="button" id="btn_add_tags" class="btn btn-sm btn-warning">Thêm</button>
-											</label>
-											<select class="form-control select2" id="post_tags" name="taxonomy[]" multiple="multiple" data-placeholder="Chọn danh mục..." style="width: 100%;">
-												<?php
-												foreach ($taxonomies as $taxonomy) {
-													if ($taxonomy->taxonomy == 'post_tags' && $taxonomy->parent == 0) {
-														echo '<option value="' . $taxonomy->id . '">' . $taxonomy->title_vi . '</option>';
-														if ($taxonomy->sub > 0) {
-															foreach ($taxonomies as $taxonomy_sub) {
-																if ($taxonomy->id == $taxonomy_sub->parent) {
-																	echo '<option value="' . $taxonomy_sub->id . '">- - ' . $taxonomy_sub->title_vi . '</option>';
-																}
-															}
-														}
-													}
-												}
-												?>
-											</select>
-										</div>
-									</div> -->
-
-									<div class="form-group">
-										<label for="meta_content" class="col-sm-12 col-md-12 col-lg-12">Giới thiệu chi tiết</label>
-										<div class="col-sm-12 col-md-12 col-lg-12">
-											<textarea class="form-control" name="meta_content" id="meta_content"></textarea>
-										</div>
-										<script type="text/javascript">
-											CKEDITOR.replace('meta_content', {
-												// Reset toolbar settings, so full toolbar will be generated automatically.
-												removeButtons: null,
-												height: 450,
-												entities: false,
-												fullPage: true,
-												// Image browser
-												filebrowserImageBrowseUrl: filemanageUrl,
-												filebrowserImageUploadUrl: filemanageUrl,
-												// allow style and css
-												allowedContent: true,
-												// auto wrap content in p tag
-												autoParagraph: false
-											});
-										</script>
-									</div>
-								</div>
-
 							</div>
 						</div>
 					</div><!-- /.box-body -->

@@ -48,6 +48,14 @@ $books = $database->loadObjectList();
 </section>
 
 <script>
+
+
+    function change(id){
+        var input_id_change = document.getElementById('id_change').value;
+        document.getElementById('id_change').value = input_id_change + id + ",";
+    }
+
+
     function getDataStudent(){
         var id = document.getElementById("sinhvien").value;
         var _url = "ajax/cart/ajax.cart_get_infor.php";

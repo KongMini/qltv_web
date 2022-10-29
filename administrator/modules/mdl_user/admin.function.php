@@ -21,10 +21,9 @@ class Model
 		if ($status == 1) $where .= " and ( a.publish = $status ) ";
 		else if ($status == 2) $where .= " and ( a.publish = 0 ) ";
 
-		$query = "SELECT a.*,b.role_code, IFNULL(t1.total_post, 0) as total_post  FROM e4_users a 
+		$query = "SELECT a.*,b.role_code  FROM e4_users a 
 			left join e4_roles b on a.permission = b.id 
-			LEFT JOIN (SELECT count(c.id) as total_post, c.user_created FROM e4_posts c WHERE 1 = 1 GROUP BY c.user_created) t1 ON a.id = t1.user_created
-		where 1=1 " . $where . " 
+		where user_type='admin' " . $where . " 
 		GROUP BY a.id
 		ORDER BY a.user_type, a.status_public desc, a.permission asc";
 		$database->setQuery($query);

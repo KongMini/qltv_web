@@ -39,13 +39,10 @@ global $ariacms;
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Hệ thống</th>
-								<!-- <th>Nhóm người dùng</th> -->
+
 								<th>Tên đầy đủ</th>
 								<th>Account</th>
 								<th>Nhóm Quyền</th>
-								<th>Đã đăng</th>
-								<!-- <th>Sách</th> -->
 								<th>Tạo lúc</th>
 								<th>Thao tác</th>
 							</tr>
@@ -61,12 +58,9 @@ global $ariacms;
 							?>
 									<tr>
 										<td><?= $i ?></td>
-										<td><?= ($user->user_type == 'admin') ? 'Admin Web' : (($user->user_type == 'public') ? 'Public Web' : 'Không xác định') ?></td>
-										<!-- <td><?= ($user->status_public == 'vietnam') ? 'Việt Nam' : (($user->status_public == 'danhnhan') ? 'Danh nhân' : (($user->status_public == 'quocte') ? "Quốc tế" : "Mặc định")) ?></td> -->
-										<td><?= $user->fullname ?></td>
+                                        <td><?= $user->fullname ?></td>
 										<td><?= $user->email ?></td>
 										<td><?= $user->role_code ?></td>
-										<td><?= $user->total_post ?></td>
 										<!-- <td><?= $user->total_book ?></td> -->
 										<td><?= $ariacms->unixToDate($user->date_created, "/") . " " . $ariacms->unixToTime($user->date_created, ":") ?></td>
 										<td>

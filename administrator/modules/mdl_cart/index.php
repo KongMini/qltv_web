@@ -8,6 +8,9 @@ switch ($ariacms->getParam("task")) {
     case "cart_edit":
         Model::cart_edit();
         break;
+    case "cart_mail":
+        Model::cart_mail();
+        break;
 	case "cart_delete":
 		Model::cart_delete();
 		break;

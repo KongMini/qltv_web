@@ -20,7 +20,7 @@ class View
     {
         include("admin.html.cart_add.php");
     }
-	static function cart_edit($student, $lists, $books, $detail, $id_user)
+	static function cart_edit($student, $lists, $books, $detail, $id_user, $check)
 	{
 		include("admin.html.cart_edit.php");
 	}

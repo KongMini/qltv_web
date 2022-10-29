@@ -47,51 +47,32 @@ global $ariacms;
 									<input type="email" class="form-control" id="email" value="<?php echo $profile['email'] ?>" required name="email" placeholder="Email" />
 								</div>
 							</div>
-							<!-- <div class="form-group">
-								<label for="homephone" class="col-sm-3 col-md-3 col-lg-2 control-label">Homephone</label>
-								<div class="col-sm-9 col-md-9 col-lg-10">
-									<input type="text" class="form-control" id="homephone" value="<?php echo $profile['homephone'] ?>" name="homephone" placeholder="Homephone" />
-								</div>
-							</div> -->
 							<div class="form-group">
 								<label for="mobifone" class="col-sm-3 col-md-3 col-lg-2 control-label">Mobifone</label>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<input type="text" class="form-control" id="mobifone" value="<?php echo $profile['mobifone'] ?>" name="mobifone" placeholder="Mobifone" />
 								</div>
 							</div>
-							<!-- <div class="form-group">
-								<label for="skype" class="col-sm-3 col-md-3 col-lg-2 control-label">Skype</label>
-								<div class="col-sm-9 col-md-9 col-lg-10">
-									<input type="text" class="form-control" id="skype" value="<?php echo $profile['skype'] ?>" name="skype" placeholder="Skype" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="yahoo" class="col-sm-3 col-md-3 col-lg-2 control-label">Yahoo</label>
-								<div class="col-sm-9 col-md-9 col-lg-10">
-									<input type="text" class="form-control" id="yahoo" value="<?php echo $profile['yahoo'] ?>" name="yahoo" placeholder="Yahoo" />
-								</div>
-							</div> -->
 							<div class="form-group">
 								<label for="facebook" class="col-sm-3 col-md-3 col-lg-2 control-label">Facebook</label>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<input type="text" class="form-control" id="facebook" value="<?php echo $profile['facebook'] ?>" name="facebook" placeholder="Facebook" />
 								</div>
 							</div>
-							<!-- <div class="form-group">
-								<label for="address" class="col-sm-3 col-md-3 col-lg-2 control-label">Địa chỉ</label>
-								<div class="col-sm-9 col-md-9 col-lg-10">
-									<input type="text" class="form-control" id="address" value="<?php echo $profile['address'] ?>" name="address" placeholder="Địa chỉ" />
-								</div>
-							</div> -->
 							<div class="form-group">
 								<label for="image_url" class="col-sm-3 col-md-3 col-lg-2 control-label">Link Ảnh đại diện</label>
-								<div class="col-sm-7 col-md-7 col-lg-8">
-									<input type="text" class="form-control" id="image_url" value="<?php echo $profile['image_url'] ?>" name="image_url" placeholder="Ảnh đại diện" />
-								</div>
-								<div class="col-sm-2 col-md-2 col-lg-2">
-									<input class="btn btn-info choiceFile cursor " id="newImg" txthide="image_url" onclick="fcall.fcChoiceImg(this);" data-toggle="tooltip" title="Nhấn để chọn ảnh trên hệ thống" type="button" value="Đổi ảnh" />
-								</div>
+								<div class="col-sm-2 col-md-2 col-lg-3">
+                                    <?php if ($profile['image_url'] != '') { ?>
+                                        <img style="height:75px;" id="newimage" txthide="image_url" class="choiceImg cursor margin" src="<?php echo $profile['image_url'] ?>" onclick="openPopupImg('image')" data-toggle="tooltip" title="Nhấn để đổi ảnh đại diện" />
+                                    <?php } else { ?>
+                                        <img style="height:75px;" id="newimage" txthide="image_url" class="choiceImg cursor margin" src="templates/aptcms/dist/img/no-image.png" onclick="openPopupImg('image')" data-toggle="tooltip" title="Nhấn để chọn ảnh đại diện" />
+                                    <?php } ?></div>
+								<div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input class="form-control " id="image" name="image_url" type="text" placeholder="Đường dẫn ảnh..." value="" /></div>
+
+
 							</div>
+
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-2 col-lg-10">
 									<button type="submit" class="btn btn-danger" name="sb_profile_edit" value="profile_edit">Cập nhật</button>
