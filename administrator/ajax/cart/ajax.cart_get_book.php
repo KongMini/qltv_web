@@ -58,7 +58,7 @@ $books = $database->loadObjectList();
     <td>
        Mược sách
     </td>
-    <td> 1 </td>
+    <td> <?= $book['soluong'] ?> </td>
     <td>
        <a onclick="delete_img(<?= $id?>)"><i class="fa fa-trash text-red" data-toggle="tooltip" title="Xóa" data-original-title="Xóa"></i></a>
     </td>

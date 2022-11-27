@@ -5,14 +5,14 @@ class Model
 	{
 		$str = '';
 		if ($row->status == '1') {
-			$str .= '<a onclick="update_value_by_id(\'e4_roles\', \'status\', \'' . $row->id . '\', \'0\');" data-toggle="tooltip" href="javascript:void(0);" title="Nhấn để khóa"><i class="fa fa-unlock-alt"></i></a>&nbsp;&nbsp;';
+			$str .= '<a onclick="update_value_by_id(\'e4_roles\', \'status\', \'' . $row->id . '\', \'0\');" data-toggle="tooltip" href="javascript:void(0);" title="Nhấn để khóa"><i style="font-size:24px"  class="fa fa-unlock-alt"></i></a>&nbsp;&nbsp;';
 		} else {
-			$str .= '<a onclick="update_value_by_id(\'e4_roles\', \'status\', \'' . $row->id . '\', \'1\');" data-toggle="tooltip" href="javascript:void(0);" title="Nhấn để kích hoạt"><i class="fa fa-lock text-black"></i></a>&nbsp;&nbsp;';
+			$str .= '<a onclick="update_value_by_id(\'e4_roles\', \'status\', \'' . $row->id . '\', \'1\');" data-toggle="tooltip" href="javascript:void(0);" title="Nhấn để kích hoạt"><i style="font-size:24px"  class="fa fa-lock text-black"></i></a>&nbsp;&nbsp;';
 		}
-		$str .= '<a data-toggle="tooltip" href="?module=roles&task=roles_module_action&id=' . $row->id . '" title="Các chức năng được thao tác"><i class="fa fa-list-alt"></i></a>&nbsp;&nbsp;';
-		$str .= '<a data-toggle="tooltip" href="?module=roles&task=roles_menu_access&id=' . $row->id . '" title="Các menu được truy cập"><i class="fa fa-list"></i></a>&nbsp;&nbsp;';
-		$str .= '<a href="javascript:void(0);" data-toggle="modal" data-target="#showCNTT"  onclick="showCNTT(\'' . $row->id . '\',\'ajax/roles/ajax.roles_get.php\')"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Cập nhật thông tin"></i></a>&nbsp;&nbsp;';
-		$str .= '<a href ="?module=roles&task=roles_delete&id=' . $row->id . '" onclick="return confirmAction();"><i class="fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
+		$str .= '<a data-toggle="tooltip" href="?module=roles&task=roles_module_action&id=' . $row->id . '" title="Các chức năng được thao tác"><i style="font-size:24px"  class="fa fa-list-alt"></i></a>&nbsp;&nbsp;';
+		$str .= '<a data-toggle="tooltip" href="?module=roles&task=roles_menu_access&id=' . $row->id . '" title="Các menu được truy cập"><i style="font-size:24px"  class="fa fa-list"></i></a>&nbsp;&nbsp;';
+		$str .= '<a href="javascript:void(0);" data-toggle="modal" data-target="#showCNTT"  onclick="showCNTT(\'' . $row->id . '\',\'ajax/roles/ajax.roles_get.php\')"><i style="font-size:24px"  class="fa fa-pencil-square-o" data-toggle="tooltip" title="Cập nhật thông tin"></i></a>&nbsp;&nbsp;';
+		//$str .= '<a href ="?module=roles&task=roles_delete&id=' . $row->id . '" onclick="return confirmAction();"><i style="font-size:24px"  class="fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
 		echo $str;
 	}
 	static function roles_view()

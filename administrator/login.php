@@ -31,7 +31,12 @@ if ($act == "doLogin") {
       $_SESSION["xkt_timesession"] = time();
       $_SESSION["user"] = $user;
 
-      header("location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      if($_SESSION["user"]['permission'] == 10){
+          header("location: http://$_SERVER[HTTP_HOST]/administrator/index.php?module=profile");
+      }else{
+          header("location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      }
+
       exit();
     } else {
       echo '<script language="javascript">alert("Thông tin đăng nhập không chính xác hoặc tài khoản chưa được kích hoạt.");</script>';

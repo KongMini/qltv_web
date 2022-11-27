@@ -4,10 +4,12 @@ class Model
 	static function book_view_link($row)
 	{
 		$str = '';
-		$str .= '<a href ="?module=book&task=book_edit&id=' . $row->id . '" ><i class="font-size-24 fa fa-pencil-square-o" data-toggle="tooltip"  title="Cập nhật thông tin"></i></a>&nbsp;&nbsp;';
+        if($_SESSION['user']['permission'] != 10) {
+            $str .= '<a href ="?module=book&task=book_edit&id=' . $row->id . '" ><i class="font-size-24 fa fa-pencil-square-o" data-toggle="tooltip"  title="Cập nhật thông tin"></i></a>&nbsp;&nbsp;';
 
-		$str .= '<a href ="?module=book&task=book_delete&id=' . $row->id . '" onclick="return confirmAction();"><i class="font-size-24 fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
-		return $str;
+            $str .= '<a href ="?module=book&task=book_delete&id=' . $row->id . '" onclick="return confirmAction();"><i class="font-size-24 fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
+        }
+        return $str;
 	}
 
 	static function book_view()
@@ -15,7 +17,14 @@ class Model
 		global $database;
 		global $ariacms;
 		$where = " WHERE 1 = 1 ";
-		$order = ' order by  a.id desc';
+
+
+        /** Sort */
+        $order = ' order by  a.id desc';
+        if($_REQUEST['sort'] && $_REQUEST['sort_type']){
+            $order = 'ORDER BY ' . $_REQUEST['sort'] . ' ' . $_REQUEST['sort_type'];
+        }
+
 
         /** Phân trang */
 		$curPg = ($_REQUEST["curPg"] > 0) ? $_REQUEST["curPg"] : 1;

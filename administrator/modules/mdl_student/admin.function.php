@@ -22,7 +22,7 @@ class Model
 		if ($status == 1) $where .= " and ( a.publish = $status ) ";
 		else if ($status == 2) $where .= " and ( a.publish = 0 ) ";
 
-		$query = "SELECT * FROM `e4_users` WHERE user_type = 'public'" . $where . $order_by;
+		$query = "SELECT * FROM `e4_users` WHERE user_type = 'admin' and permission = '10' " . $where . $order_by;
 		$database->setQuery($query);
         $students = $database->loadObjectList();
 
@@ -51,8 +51,8 @@ class Model
                 else
                     $row->$key = $value;
 			}
-            $row->user_type = 'public';
-            $row->permission = 9;
+            $row->user_type = 'admin';
+            $row->permission = 10;
 			$row->random = md5(time());
 			$row->date_created = time();
 			$row->user_created 	= $_SESSION['user']['email'];
@@ -69,7 +69,9 @@ class Model
 			else {
 				// Insert DB
 				if ($user_id = $database->insertObject('e4_users', $row, 'id')) {
-
+                    if($_REQUEST['cart'] == 1){
+                        $ariacms->redirect("Tạo mới thành công", "index.php?module=cart&task=cart_edit&id=". $user_id);
+                    }
 					$ariacms->redirect("Tạo mới thành công", "index.php?module=student");
 				} else
 					echo $database->stderr();
@@ -101,8 +103,8 @@ class Model
                 else
                     $row->$key = $value;
             }
-            $row->user_type = 'public';
-            $row->permission = 9;
+            $row->user_type = 'admin';
+            $row->permission = 10;
             $row->random = md5(time());
             $row->date_updated = time();
             $row->user_updated 	= $_SESSION['user']['email'];

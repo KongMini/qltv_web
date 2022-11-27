@@ -25,7 +25,7 @@ $ariacms = new ariacms();
 
 $id_user = $_REQUEST['id'];
 
-$query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
+$query = "SELECT * FROM `e4_users`  WHERE user_type = 'admin' and permission = 10 ORDER BY id DESC";
 $database->setQuery($query);
 $student = $database->loadObjectList();
 
@@ -113,7 +113,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                                 <th class="col-md-2">Hình ảnh</th>
                                 <th class="col-md-2">Giá sách</th>
                                 <th class="col-md-2">Trạng thái</th>
-                                <th class="col-md-2">Số lượng</th>
+                                <th class="col-md-2">Số lượng còn</th>
                                 <th>Thao tác</th>
                             </tr>
                             </thead>
@@ -126,7 +126,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                                     <select id="idsach0" name="id_sach[]" class="form-control select2" onchange="chooseBook(0)" required>
                                         <option value="">-Chọn sách-</option>
                                         <?php foreach ($books as $value){?>
-                                            <option  value="<?= $value -> id?>"><?= $value -> masach .'-'. $value -> tensach?></option>
+                                            <option  value="<?= $value -> id?>" <?php if($value -> soluong < 1) echo "disabled"?>><?= $value -> masach .'-'. $value -> tensach?></option>
                                         <?php }?>
                                     </select>
                                 </td>
@@ -140,14 +140,12 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                             </tr>
                             </tbody>
                         </table>
-                        <?php if(!$checkthanhtoan){?>
-                            <h4 class="pull-left text-danger">Sinh viên cần thanh toán tiền mượn sách năm <?= date('Y')?> hoặc tiền nợ sách báo mất để thực hiện mượn sách</h4>
-                        <?php }?>
-                        <button class="btn btn-success pull-right" name="submitCart" value="submit" type="submit" <?php if(!$checkthanhtoan) echo'disabled'?>>Thêm vào danh sách</button>
+
+                        <button class="btn btn-success pull-right" name="submitCart" value="submit" type="submit" >Thêm vào danh sách</button>
                     </form>
                 </div><!-- /.box-body -->
             </div>
-
+            <?php if($lists){?>
             <div class="box">
                 <div class="box-header">
                     <h4 class="pull-left">Danh sách mượn - trả sách</h4>
@@ -201,6 +199,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                                             <option <?= ($value->status == '0') ? 'selected' : ''; ?> value="0">Đang mượn</option>
                                             <option <?= ($value->status == '1') ? 'selected' : ''; ?> value="1">Đã trả</option>
                                             <option <?= ($value->status == '2') ? 'selected' : ''; ?> value="2">Báo mất</option>
+                                            <option <?= ($value->status == '3') ? 'selected' : ''; ?> value="3">Quá hạn</option>
                                         </select>
                                     </td>
                                     <td><?= $value->soluong ?></td>
@@ -219,6 +218,7 @@ if(!$check || $detail['notiensach'] > 0) $checkthanhtoan = False;
                     </form>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+            <?php }?>
         </div><!-- /.col -->
     </div><!-- /.row -->
 </section>

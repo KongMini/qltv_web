@@ -65,6 +65,10 @@ if($book_detail['image']){
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label class="">Danh mục sách <span class="text-red">*</span></label>
+                                                    <div class="col-md-12">
+                                                        <input class="col-md-9" value="" type="text" placeholder="Thêm Danh mục sách..." id="dms">
+                                                        <button type="button" id="btn_add_dms" class="btn btn-sm btn-warning" onclick="Add('dms', 'danhmucsach')">Thêm</button>
+                                                    </div>
                                                     <select class="form-control select2" id="danhmucsach" name="danhmucsach"  data-placeholder="Chọn danh mục..." style="width: 100%;" required>
                                                         <option value="">- Chọn -</option>
                                                         <?php
@@ -77,6 +81,10 @@ if($book_detail['image']){
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label class="">Tác giả <span class="text-red">*</span></label>
+                                                    <div class="col-md-12">
+                                                        <input class="col-md-9" value="" type="text" placeholder="Thêm tác giả..." id="tg">
+                                                        <button type="button" id="" class="btn btn-sm btn-warning" onclick="Add('tg', 'tacgia')">Thêm</button>
+                                                    </div>
                                                     <select class="form-control select2" id="tacgia" name="tacgia"  data-placeholder="Chọn tác giả..." style="width: 100%;" required>
                                                         <option value="">- Chọn -</option>
                                                         <?php
@@ -89,6 +97,10 @@ if($book_detail['image']){
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label class="">Nhà xuất bản<span class="text-red">*</span></label>
+                                                    <div class="col-md-12">
+                                                        <input class="col-md-9" value="" type="text" placeholder="Thêm nhà xuất bản..." id="nxb">
+                                                        <button type="button" id="btn_add_dms" class="btn btn-sm btn-warning" onclick="Add('nxb', 'nhaxuatban')">Thêm</button>
+                                                    </div>
                                                     <select class="form-control select2" id="nhaxuatban" name="nhaxuatban"  data-placeholder="Chọn nhà xuất bản..." style="width: 100%;" required>
                                                         <option value="">- Chọn -</option>
                                                         <?php
@@ -125,6 +137,29 @@ if($book_detail['image']){
         overflow: scroll;
     }
 </style>
+<script>
+    function Add(id_input, id_selectBox) {
+        var values = $("#" + id_input).val();
+        if (values.trim() == '') return;
+        var _url = "ajax/book/ajax.book_add_nxb.php";
+        $.ajax({
+            url: _url,
+            data: "value=" + values +"&id_selectBox=" + id_selectBox,
+            cache: false,
+            context: document.body,
+            success: function(data) {
+
+                var obj = JSON.parse(data);
+                var appendContent;
+
+                appendContent = '<option value="' + obj.id + '" selected>' + obj.title_vi + '</option>';
+                $("#" + id_selectBox).append(appendContent);
+
+                $("#" + id_selectBox).select2();
+            }
+        });
+    }
+</script>
 <script>
     function check_value_exist2(value, input, t, c, id_result, error, id_btn) {
         var input = $(input).val();

@@ -64,6 +64,10 @@ global $ariacms;
 										<!-- <td><?= $student->total_book ?></td> -->
 										<td><?= $ariacms->unixToDate($student->date_created, "/") . " " . $ariacms->unixToTime($student->date_created, ":") ?></td>
 										<td>
+                                            <a data-toggle="tooltip" href="index.php?module=cart&task=cart_edit&id=<?= $student->id ?>">
+                                                <i style="font-size: 24px" class="fa fa-shopping-cart"></i>
+                                            </a>
+
 											<?php if ($student->publish == "1") {
 											?>
 												<a data-toggle="tooltip" title="Nhấn để hủy kích hoạt" href="index.php?module=student&task=student_unpublish&id=<?= $student->id ?>">

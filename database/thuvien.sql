@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2022 at 06:57 PM
+-- Generation Time: Nov 20, 2022 at 04:00 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -77,6 +77,7 @@ CREATE TABLE `e4_book` (
   `nguoitao` int(11) NOT NULL,
   `url` text NOT NULL,
   `trangthai` int(11) NOT NULL,
+  `vitri` text NOT NULL,
   `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -84,9 +85,9 @@ CREATE TABLE `e4_book` (
 -- Dumping data for table `e4_book`
 --
 
-INSERT INTO `e4_book` (`id`, `masach`, `tensach`, `mota`, `namxuatban`, `nhaxuatban`, `danhmucsach`, `giasach`, `soluong`, `tacgia`, `nguoitao`, `url`, `trangthai`, `image`) VALUES
-(1, 'TA001', 'Tri ân 3', '<p>sssssss</p>', 0, 1, 3, 100000, 200, '3', 1, 'tri-an', 0, '/upload/san%20pham/DTT-5542-36177856.jpg'),
-(2, 'TA002', 'Sách Tiếng Anh', '', 0, 1, 2, 120000, 123, '2', 1, 'sach-tieng-anhta002', 0, '/upload/san%20pham/DTT-5542-36177856.jpg');
+INSERT INTO `e4_book` (`id`, `masach`, `tensach`, `mota`, `namxuatban`, `nhaxuatban`, `danhmucsach`, `giasach`, `soluong`, `tacgia`, `nguoitao`, `url`, `trangthai`, `vitri`, `image`) VALUES
+(1, 'TA001', 'Tri ân 3', '<p>sssssss</p>', 0, 1, 3, 100000, 201, '3', 1, 'tri-an', 0, '', '/upload/san%20pham/DTT-5542-36177856.jpg'),
+(2, 'TA002', 'Sách Tiếng Anh', '', 0, 1, 2, 120000, 1, '2', 1, 'sach-tieng-anhta002', 0, '', '/upload/san%20pham/DTT-5542-36177856.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,10 @@ CREATE TABLE `e4_danhmucsach` (
 
 INSERT INTO `e4_danhmucsach` (`id`, `tieude`) VALUES
 (2, 'Sách Khoa Học Thế Giới'),
-(3, 'Sách Văn Học');
+(3, 'Sách Văn Học'),
+(4, 'Kim Đồng'),
+(5, 'Sách mới'),
+(6, 'Sách Toán Học');
 
 -- --------------------------------------------------------
 
@@ -298,39 +302,25 @@ INSERT INTO `e4_leftmenu` (`id`, `parent_id`, `title_vi`, `title_en`, `icon`, `l
 (10, 2, 'Quản lý nhóm quyền', 'Roles Group Management', '', '?module=roles', 'active', 2, 42, '0', '', 0),
 (11, 0, 'Quản lý người quản trị website', 'User Management', '', '?module=user', 'active', 1, 10, 'deactive', '', 0),
 (13, 2, 'Quản lý Menu Admin', 'Menu Admin Management', '', '?module=menu_admin', 'active', 2, 41, 'deactive', '', 0),
-(15, 95, 'Danh mục tin tức', 'News Category Management', 'fa fa-files-o', '?module=news_category', 'active', 2, 2, 'deactive', '', 0),
 (25, 74, 'Quản lý Modules', 'Modules Management', '', '?module=module', 'active', 2, 52, '1', '', 0),
 (33, 74, 'Quản lý Blog (Admin System)', 'Quản lý Blog (Admin System)', '', '?module=block', 'active', 2, 51, '0', '', 0),
 (49, 0, 'Quản lý thông tin cấu hình', 'Quản lý thông tin cấu hình', 'fa fa-cogs', '', 'deactive', 1, 9, '0', '', 0),
 (51, 74, 'Quản lý Tasks - Modules', 'Tasks & Modules Management', '', '?module=task', 'active', 2, 53, '0', '', 0),
-(72, 0, 'Quản lý liên hệ', 'Contacts Management', 'fa fa-headphones', '?module=contact', 'deactive', 1, 6, 'deactive', '', 0),
 (73, 49, 'Quản lý menu website', 'Quản lý menu website', '', '?module=web_menu', 'active', 2, 31, 'deactive', '', 0),
 (74, 0, 'Dành cho người phát triển', 'Dành cho người phát triển', 'fa fa-cubes', '', 'deactive', 1, 10, '0', '', 0),
 (87, 0, 'Tài khoản cá nhân', 'Your Profile', 'fa fa-user', '?module=profile', 'active', 1, 7, 'deactive', '', 1483904741),
 (90, 49, 'Quản lý cấu hình trang chủ', 'Homepage Management', '', '?module=web_home', 'active', 2, 32, 'deactive', '', 1484751727),
 (91, 49, 'Quản lý hình ảnh hệ thống', 'System Image Management', 'fa fa-picture-o', '?module=web_image', 'active', 2, 7, 'deactive', '', 1484761092),
 (92, 49, 'Quản lý thông tin website', 'Website information management', 'fa fa-globe', '?module=web_information', 'active', 2, 4, '', '', 1487872412),
-(95, 0, 'Quản lý bài viết', 'News Content Management', 'fa fa-book', '', 'deactive', 1, 5, '', '', 1592553201),
-(96, 95, 'Nhóm tin tức', 'News Group management', '', '?module=news_group', 'active', 2, 3, '', '', 1595237154),
-(97, 95, 'Phân loại tin tức', 'News Type Management', '', '?module=news_type', 'deactive', 2, 5, '', '', 1595237446),
-(98, 95, 'Chủ đề tin tức', 'News Topic Management', '', '?module=news_topic', 'deactive', 2, 4, '', '', 1595237512),
 (99, 49, 'Quản lý mã nhúng', 'Analytics code', '', '?module=analytics_code', 'active', 2, 0, '', '', 1595491947),
-(100, 95, 'Quản lý thẻ - tags bài viết', 'Tags Management', 'fa fa-tags', '?module=news_tags', 'deactive', 2, 6, '', '', 1595917972),
-(101, 95, 'Danh sách bài viết', 'Posts Management', 'fa fa-files-o', '?module=news', 'active', 2, 1, '', '', 1595919917),
-(102, 106, 'Danh mục sản phẩm', 'Product categoty management', '', '?module=product_category', 'active', 2, 2, 'deactive', '1', 1596720755),
-(103, 106, 'Danh sách sản phẩm', 'Product Management', '', '?module=product', 'active', 2, 1, 'deactive', '1', 1596722636),
-(104, 106, 'Nhóm sản phẩm', 'Product Group Management', '', '?module=product_group', 'active', 2, 3, 'deactive', '1', 1596824928),
-(105, 106, 'Phân loại sản phẩm', 'Product Type Management', '', '?module=product_type', 'active', 2, 4, 'deactive', '1', 1596870101),
-(106, 0, 'Quản lý sản phẩm', 'Product Content Management', 'fa fa-star', '', 'deactive', 1, 3, 'deactive', '1', 1596871407),
-(107, 0, 'Quản lý Mượn - trả', 'Order-Product Management', 'fa fa-shopping-cart', '?module=cart', 'active', 1, 2, 'deactive', '1', 1597135674),
-(108, 112, 'Quản lý danh mục sách', 'Book Category Management', '', '?module=book_category', 'active', 2, 1, 'deactive', '1', 1597808591),
-(109, 112, 'Danh sách ấn phẩm', 'Books Management', '', '?module=book', 'active', 2, 0, 'deactive', '1', 1597808616),
-(110, 112, 'Quản lý tác giả', 'Authors Management', '', '?module=book_author', 'active', 2, 3, 'deactive', '1', 1597808641),
-(111, 112, 'Quản lý NXB', 'Book NXB Management', '', '?module=book_nxb', 'active', 2, 2, 'deactive', '1', 1597819881),
-(112, 0, 'Quản lý nội dung sách', 'Book Content Management', 'fa fa-book', '', 'active', 1, 1, 'deactive', '1', 1597823910),
+(107, 0, 'Quản lý Mượn - trả', 'Order-Product Management', 'fa fa-shopping-cart', '?module=cart', 'active', 1, 4, 'deactive', '1', 1597135674),
+(108, 0, 'Quản lý danh mục sách', 'Book Category Management', '', '?module=book_category', 'active', 1, 1, 'deactive', '1', 1597808591),
+(109, 0, 'Danh sách sách', 'Books Management', '', '?module=book', 'active', 1, 0, 'deactive', '1', 1597808616),
+(110, 0, 'Quản lý tác giả', 'Authors Management', '', '?module=book_author', 'active', 1, 3, 'deactive', '1', 1597808641),
+(111, 0, 'Quản lý NXB', 'Book NXB Management', '', '?module=book_nxb', 'active', 1, 2, 'deactive', '1', 1597819881),
+(112, 0, 'Quản lý nội dung sách', 'Book Content Management', 'fa fa-book', '', 'deactive', 1, 1, 'deactive', '1', 1597823910),
 (113, 0, 'Quản lý sự kiện', 'Event Management', '', '?module=event', 'deactive', 1, 99, 'deactive', '1', 1597824883),
 (114, 0, 'Thư viện danh ngôn', 'Quotation Management', '', '?module=quotation', 'deactive', 1, 99, 'deactive', '1', 1597828844),
-(115, 106, 'Thẻ - tags sản phẩm', 'Product tags', '', '?module=product_tags', 'deactive', 2, 5, 'deactive', '1', 1599818435),
 (116, 0, 'Quản lý bộ sưu tập', '', 'fa fa-book', '?module=albums', 'deactive', 1, 0, 'deactive', '1', 1655795440),
 (117, 0, 'Quản lý độc giả', '', '', '?module=student', 'active', 1, 9, 'deactive', '1', 1666858318);
 
@@ -422,14 +412,14 @@ INSERT INTO `e4_muonsach` (`id`, `id_sinhvien`, `id_sach`, `soluong`, `status`, 
 (2, 13, 1, 1, 0, 1666985005),
 (3, 13, 2, 1, 0, 1666985005),
 (4, 13, 2, 1, 0, 1666986246),
-(5, 14, 2, 1, 2, 1667059862),
+(5, 14, 2, 1, 1, 1668194468),
 (6, 14, 1, 1, 0, 1666986359),
 (7, 13, 2, 1, 0, 1667031491),
 (8, 13, 2, 1, 0, 1667031608),
 (9, 13, 1, 1, 0, 1667031608),
 (10, 13, 2, 1, 1, 1667057509),
 (11, 14, 2, 1, 1, 1667057396),
-(12, 14, 1, 1, 0, 1667057402);
+(12, 14, 1, 1, 1, 1668194450);
 
 -- --------------------------------------------------------
 
@@ -448,7 +438,8 @@ CREATE TABLE `e4_nhaxuatban` (
 
 INSERT INTO `e4_nhaxuatban` (`id`, `tennhaxuatban`) VALUES
 (1, 'Nhà sách Việt'),
-(2, 'Nhà sách Kim Đồng');
+(2, 'Nhà sách Kim Đồng'),
+(3, 'Thời đại mới');
 
 -- --------------------------------------------------------
 
@@ -595,7 +586,8 @@ CREATE TABLE `e4_roles` (
 
 INSERT INTO `e4_roles` (`id`, `role_code`, `role_desc`, `status`, `menu_id`, `module_name_list`, `function_code_list`) VALUES
 (5, 'Quyền quản trị hệ thống', 'Dành cho người quản trị hệ thống', 1, '117,112,109,108,111,110,107,106,103,102,104,105,95,101,15,96,72,87,49,99,92,91,73,90,74,33,25,51,2,13,10,11', 'albums,student,albums,product_tags,quotation,event,book_nxb,book_author,book,book_category,contact,cart,product_type,product_group,product,product_category,news_tags,analytics_code,news_topic,news_type,news_group,news,web_information,web_image,web_home,product,profile,web_menu,block,task,roles,module,menu_admin,news_category,user', 'student_add,student_delete,student_edit,product_tags_add,product_tags_delete,product_tags_edit,product_tags_view,quotation_add,quotation_delete,quotation_edit,quotation_view,event_add,event_delete,event_edit,event_view,book_nxb_add,book_nxb_delete,book_nxb_edit,book_nxb_view,book_author_add,book_author_delete,book_author_edit,book_author_view,book_add,book_delete,book_edit,book_view,book_category_add,book_category_delete,book_category_edit,book_category_view,contact_delete,contact_edit,contact_event,contact_newsletter,contact_view,cart_add,cart_delete,cart_edit,cart_view,product_type_add,product_type_delete,product_type_edit,product_type_view,product_group_add,product_group_delete,product_group_edit,product_group_view,product_add,product_delete,product_edit,product_view,product_category_add,product_category_delete,product_category_edit,product_category_view,news_tags_add,news_tags_delete,news_tags_edit,news_tags_view,analytics_code_add,analytics_code_delete,analytics_code_edit,analytics_code_view,news_topic_add,news_topic_delete,news_topic_edit,news_topic_view,news_type_add,news_type_delete,news_type_edit,news_type_view,news_group_add,news_group_delete,news_group_edit,news_group_view,news_add,news_delete,news_edit,news_view,web_branches_add,web_branches_delete,web_branches_edit,web_information_edit,web_image_add,web_image_delete,web_image_edit,web_image_view,web_home_add,web_home_delete,web_home_edit,web_home_view,product_add,product_category_add,product_category_delete,product_category_edit,product_category_view,product_delete,product_edit,product_view,profile_change_pass,profile_edit,web_link_edit,web_menu_add,web_menu_delete,web_menu_edit,web_menu_view,block_add,block_delete,block_edit,block_view,task_add,task_delete,task_edit,task_view,roles_add,roles_delete,roles_edit,roles_menu_access,roles_module_action,roles_view,module_add,module_delete,module_edit,module_view,menu_admin_add,menu_admin_delete,menu_admin_edit,menu_admin_view,news_category_add,news_category_delete,news_category_edit,news_category_view,user_add,user_delete,user_edit,user_publish,user_unpublish,user_view'),
-(9, 'Nhân viên', 'Dành cho nhân viên quản lý thư viện', 1, '87,74', 'lien-he,dich-vu,recruitments,projects,product,profile,news', 'recruitments_add,recruitments_category_add,recruitments_category_delete,recruitments_category_edit,recruitments_category_view,recruitments_delete,recruitments_edit,recruitments_view,projects_add,projects_category_add,projects_category_delete,projects_category_edit,projects_category_view,projects_delete,projects_edit,projects_view,product_add,product_category_add,product_category_delete,product_category_edit,product_category_view,product_delete,product_edit,product_view,profile_change_pass,profile_edit,news_add,news_category_add,news_category_delete,news_category_edit,news_category_view,news_delete,news_edit,news_view');
+(9, 'Nhân viên', 'Dành cho nhân viên quản lý thư viện', 1, '87,74', 'lien-he,dich-vu,recruitments,projects,product,profile,news', 'recruitments_add,recruitments_category_add,recruitments_category_delete,recruitments_category_edit,recruitments_category_view,recruitments_delete,recruitments_edit,recruitments_view,projects_add,projects_category_add,projects_category_delete,projects_category_edit,projects_category_view,projects_delete,projects_edit,projects_view,product_add,product_category_add,product_category_delete,product_category_edit,product_category_view,product_delete,product_edit,product_view,profile_change_pass,profile_edit,news_add,news_category_add,news_category_delete,news_category_edit,news_category_view,news_delete,news_edit,news_view'),
+(10, 'Sinh viên', 'Xem thông tin sinh viên', 1, '109,87', '', '');
 
 -- --------------------------------------------------------
 
@@ -614,7 +606,9 @@ CREATE TABLE `e4_tacgia` (
 
 INSERT INTO `e4_tacgia` (`id`, `tentacgia`) VALUES
 (2, 'Nam Cao'),
-(3, 'Lão Hạc');
+(3, 'Lão Hạc'),
+(4, 'Kim Đồng'),
+(5, 'Nguyễn Ngọc Ký');
 
 -- --------------------------------------------------------
 
@@ -684,7 +678,8 @@ INSERT INTO `e4_users` (`id`, `masv`, `user_type`, `fullname`, `password`, `emai
 (6, '', 'admin', 'Ngô Tất Tố', '0cc175b9c0f1b6a831c399e269772661', 'ngotatto@gmail.com', 9, 1, '7dd9dee258a8b96026f846c7605fd0d1', NULL, NULL, '', 'https://upload.wikimedia.org/wikipedia/vi/9/92/NgoTatTo.jpg', '', NULL, NULL, 1597945991, 'admin@gmail.com', 1598762734, 'admin@gmail.com', 'vietnam', '', '', '', 0),
 (7, '', 'admin', 'Thạch Lam', '0cc175b9c0f1b6a831c399e269772661', 'thachlam@gmail.com', 9, 1, '65df97c8e1ed609c4250b16341c75aba', NULL, NULL, '', 'https://media.ex-cdn.com/EXP/media.nongnghiep.vn/files/bao_in/2020/05/19/thachlam-0928_20200519_694-100644.jpeg', '', NULL, NULL, 1597946064, 'admin@gmail.com', 1598762740, 'admin@gmail.com', 'quocte', '', '', '', 0),
 (13, '1851062330', 'public', 'Phùng Văn Công', 'e10adc3949ba59abbe56e057f20f883e', '1851062330@e.tlu.edu.vn', 9, 1, 'c739373b3a5604e8be503095dbcd92e7', NULL, NULL, NULL, '', '', NULL, NULL, 1666861526, 'admin@gmail.com', 1666861526, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642772', 0),
-(14, '1851062345', 'public', 'Đào Tùng Lâm', 'e10adc3949ba59abbe56e057f20f883e', '1851062345@e.tlu.edu.vn', 9, 1, 'e714f66102588512cad19bc913098fc8', NULL, NULL, NULL, '', '', NULL, NULL, 1666862294, 'admin@gmail.com', 1666862294, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642773', 220000);
+(14, '1851062345', 'public', 'Đào Tùng Lâm', 'e10adc3949ba59abbe56e057f20f883e', '1851062345@e.tlu.edu.vn', 9, 1, 'e714f66102588512cad19bc913098fc8', NULL, NULL, NULL, '', '', NULL, NULL, 1666862294, 'admin@gmail.com', 1666862294, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642773', 220000),
+(15, '1851061640', 'public', 'Đỗ Thị Linh', 'e10adc3949ba59abbe56e057f20f883e', '1851061640@e.tlu.edu.vn', 9, 1, '0ba7aaffef06206de764a9bbe27fe598', NULL, NULL, NULL, '', '    ', NULL, NULL, 1668191804, 'admin@gmail.com', 1668191804, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0987654331', 0);
 
 -- --------------------------------------------------------
 
@@ -931,7 +926,8 @@ ALTER TABLE `e4_thanhtoan`
 -- Indexes for table `e4_users`
 --
 ALTER TABLE `e4_users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Role Id` (`permission`);
 
 --
 -- Indexes for table `e4_users_meta`
@@ -979,7 +975,7 @@ ALTER TABLE `e4_book`
 -- AUTO_INCREMENT for table `e4_danhmucsach`
 --
 ALTER TABLE `e4_danhmucsach`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `e4_functions`
@@ -1009,7 +1005,7 @@ ALTER TABLE `e4_muonsach`
 -- AUTO_INCREMENT for table `e4_nhaxuatban`
 --
 ALTER TABLE `e4_nhaxuatban`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `e4_options`
@@ -1033,13 +1029,13 @@ ALTER TABLE `e4_order_detail`
 -- AUTO_INCREMENT for table `e4_roles`
 --
 ALTER TABLE `e4_roles`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `e4_tacgia`
 --
 ALTER TABLE `e4_tacgia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `e4_thanhtoan`
@@ -1051,7 +1047,7 @@ ALTER TABLE `e4_thanhtoan`
 -- AUTO_INCREMENT for table `e4_users`
 --
 ALTER TABLE `e4_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `e4_users_meta`

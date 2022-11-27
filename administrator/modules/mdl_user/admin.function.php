@@ -21,9 +21,9 @@ class Model
 		if ($status == 1) $where .= " and ( a.publish = $status ) ";
 		else if ($status == 2) $where .= " and ( a.publish = 0 ) ";
 
-		$query = "SELECT a.*,b.role_code  FROM e4_users a 
+		echo $query = "SELECT a.*,b.role_code  FROM e4_users a 
 			left join e4_roles b on a.permission = b.id 
-		where user_type='admin' " . $where . " 
+		where user_type='admin' and permission < 10 " . $where . " 
 		GROUP BY a.id
 		ORDER BY a.user_type, a.status_public desc, a.permission asc";
 		$database->setQuery($query);

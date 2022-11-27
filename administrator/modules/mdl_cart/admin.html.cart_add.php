@@ -24,6 +24,7 @@ $books = $database->loadObjectList();
                                     <option value="<?= $value -> id?>" ><?= $value -> masv ."-" . $value -> fullname?></option>
                                 <?php }?>
                             </select>
+                            <a type="button" href="index.php?module=student&task=student_add&cart=1" id="btn_add_dms" class="btn btn-sm btn-primary" >Thêm sinh viên</a>
 
                             <img src="../templates/emac/images/loading-icon.gif" style="width: 50%;display: none" class="text-center" id="loading" >
 
@@ -38,18 +39,51 @@ $books = $database->loadObjectList();
         <div class="col-md-8">
             <div class="box">
                 <div class="box-header">
-                    <h4 class="pull-left">Danh sách mượn - trả sách</h4>
-                    <h4 class="pull-right text-danger">Tổng tiền phải đóng: <?= $ariacms->formatPrice($detail['total']) ?></h4>
+                    <h4 class="pull-left">Tìm kiếm sách</h4>
                 </div><!-- /.box-header -->
-                <!-- /.box-body -->
-            </div><!-- /.box -->
+                <div class="box-body table-responsive">
+                    <form method="" action="">
+
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th class="col-md-3">Mã sách/Tên sách</th>
+                                <th class="col-md-2">Hình ảnh</th>
+                                <th class="col-md-2">Giá sách</th>
+                                <th class="col-md-2">Trạng thái</th>
+                                <th class="col-md-2">Số lượng còn</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="table_frames">
+
+                            <tr class="valign-middle" id="row0">
+                                <td>1</td>
+                                <td>
+                                    <select id="idsach0" name="id_sach[]" class="form-control select2" onchange="chooseBook(0)" required>
+                                        <option value="">-Chọn sách-</option>
+                                        <?php foreach ($books as $value){?>
+                                            <option  value="<?= $value -> id?>" <?php if($value -> soluong < 1) echo "disabled"?>><?= $value -> masach .'-'. $value -> tensach?></option>
+                                        <?php }?>
+                                    </select>
+                                </td>
+                                <td></td>
+                                <td> </td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div><!-- /.box-body -->
+            </div>
         </div><!-- /.col -->
     </div><!-- /.row -->
 </section>
 
 <script>
-
-
     function change(id){
         var input_id_change = document.getElementById('id_change').value;
         document.getElementById('id_change').value = input_id_change + id + ",";

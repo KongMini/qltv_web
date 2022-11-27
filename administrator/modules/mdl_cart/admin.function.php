@@ -13,22 +13,44 @@ class Model
 	{
 		global $database;
 		global $ariacms;
+
+        $where = " WHERE 1 = 1 ";
+        $keyword	= $_REQUEST["keyword"];
+
+        /** Sort */
+        $order = 'ORDER BY time_update DESC';
+        if($_REQUEST['sort'] && $_REQUEST['sort_type']){
+            $order = 'ORDER BY ' . $_REQUEST['sort'] . ' ' . $_REQUEST['sort_type'];
+        }
+
 		$curPg = ($_REQUEST["curPg"] > 0) ? $_REQUEST["curPg"] : 1;
 		$maxRows = ($_REQUEST["page_size"] > 0) ? $_REQUEST["page_size"] : $ariacms->web_information->admin_per_page;
 		$curRow = ($curPg - 1) * $maxRows;
 		$limit = " LIMIT " . $curRow . "," . $maxRows . " ";
 
+        /** Search */
+        $start_date	= @$_REQUEST["start_date"];
+        $s_start_date = (int) $ariacms->dateToUnix($_REQUEST['start_date']) + 86400;
+        $end_date	= @$_REQUEST["end_date"];
+        $s_end_date = (int) $ariacms->dateToUnix($_REQUEST['end_date']) + 86400;
+
+        ($keyword != "") ? $where .= " and ( b.fullname like '%$keyword%'  OR b.masv = '$keyword' ) " : $where .= "";
+
+        ($start_date != "") ? $where .= " and ( a.time_update >= $s_start_date ) " : $where .= "";
+        ($end_date != "") ? $where .= " and ( a.time_update <= $s_end_date ) " : $where .= "";
+
 		$query = "SELECT a.time_update, b.* FROM `e4_muonsach` a
                 LEFT JOIN e4_users b ON a.id_sinhvien = b.id
+                ". $where ."
                 GROUP BY a.time_update 
-                ORDER BY time_update DESC " . $limit;
+                ". $order . $limit;
 		$database->setQuery($query);
 		$carts = $database->loadObjectList();
 
 		$query = "SELECT b.id FROM `e4_muonsach` a
                 LEFT JOIN e4_users b ON a.id_sinhvien = b.id
-                GROUP BY a.time_update 
-                ORDER BY time_update DESC";
+                ". $where ."
+                GROUP BY a.time_update " . $order;
 		$database->setQuery($query);
 		$totalRows = $database->loadObjectList();
 
@@ -60,7 +82,7 @@ class Model
 
             $ariacms->redirect("Tạo mới thành công", "index.php?module=cart");
         }else{
-            $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
+            $query = "SELECT * FROM `e4_users`  WHERE user_type = 'admin' and permission ='10' ORDER BY id DESC";
             $database->setQuery($query);
             $student = $database->loadObjectList();
 
@@ -137,18 +159,20 @@ class Model
                     /** Check có trạng thái báo mất hay không */
                     if($muonsach_list[$value]['status_old'] == 2 || $muonsach_list[$value]['status_new'] == 2){
 
-                        $giasach = $muonsach_list[$value]['giasach'];
 
-                        /** Từ báo mất -> trả sách*/
-                        if($muonsach_list[$value]['status_old'] == 2){
 
-                            $giasach *= (-1);
-                        }
-
-                        /**Cập nhật tiền nợ sách*/
-                        $query = "UPDATE e4_users SET notiensach = notiensach +  {$giasach} WHERE id=".$id_user;
-                        $database->setQuery($query);
-                        $database->query();
+//                        $giasach = $muonsach_list[$value]['giasach'];
+//
+//                        /** Từ báo mất -> trả sách*/
+//                        if($muonsach_list[$value]['status_old'] == 2){
+//
+//                            $giasach *= (-1);
+//                        }
+//
+//                        /**Cập nhật tiền nợ sách*/
+//                        $query = "UPDATE e4_users SET notiensach = notiensach +  {$giasach} WHERE id=".$id_user;
+//                        $database->setQuery($query);
+//                        $database->query();
 
                     }
 
@@ -156,7 +180,7 @@ class Model
                     if($muonsach_list[$value]['status_new'] == 1){
 
                         /**Cập nhật số lượng sách*/
-                        $query = "UPDATE e4_book SET soluong = soluong +  1 WHERE id=".$id_user;
+                        $query = "UPDATE e4_book SET soluong = soluong +  1 WHERE id=".$muonsach_list[$value]['id_sach'];
                         $database->setQuery($query);
                         $database->query();
 
@@ -166,10 +190,13 @@ class Model
             }
             $ariacms->redirect("Cập nhật thành công", "?module=cart&task=cart_edit&id=".$id_user);
         }else{
-
             $id_user = $_REQUEST['id'];
+            if($_SESSION['user']['permission'] == 10){
+                $id_user = $_SESSION['user']['id'];
+            }
 
-            $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
+
+            $query = "SELECT * FROM `e4_users`  WHERE user_type = 'admin' permission = '10' ORDER BY id DESC";
             $database->setQuery($query);
             $student = $database->loadObjectList();
 

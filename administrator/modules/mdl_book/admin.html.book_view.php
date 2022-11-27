@@ -1,5 +1,9 @@
 <?php
 global $ariacms;
+
+$link = "?module=" . $_REQUEST['module'] . "&task=book_view&page_size=". $_REQUEST['page_size'] ."&masach=". $_REQUEST['masach'] ."&tensach=". $_REQUEST['tensach'] ."&user_created=". $_REQUEST['user_created'] ."&danhmucsach=". $_REQUEST['danhmucsach'] ."&tacgia=". $_REQUEST['tacgia'] ."&nhaxuatban=". $_REQUEST['nhaxuatban'] ."&giasach=". $_REQUEST['giasach'] ."&soluong=". $_REQUEST['soluong'] ."&input_submit_search=Tìm+kiếm" ;
+
+
 ?>
 <section class="content">
 	<div class="row">
@@ -18,14 +22,71 @@ global $ariacms;
 <!--									<span class="form-control btn btn-danger hide-price">Xóa mục đã chọn</span>-->
 <!--								</th>-->
 								<th >STT</th>
-								<th >Mã sách</th>
-								<th >Tên sách</th>
-								<th >Người tạo</th>
-								<th >Danh mục</th>
-								<th >Tác giả</th>
-								<th >NXB</th>
-								<th >Giá sách</th>
-								<th >Số lượng</th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'masach' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=masach&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'masach' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=masach&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=masach&sort_type=asc';
+                                    ?>">Mã sách</a>
+                                </th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'tensach' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=tensach&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'tensach' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=tensach&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=tensach&sort_type=asc';
+                                    ?>">Tên sách</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'user_created' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=user_created&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'user_created' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=user_created&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=user_created&sort_type=asc';
+                                    ?>">Người tạo</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'danhmucsach' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=danhmucsach&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'danhmucsach' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=danhmucsach&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=danhmucsach&sort_type=asc';
+                                    ?>">Danh mục</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'tacgia' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=tacgia&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'tacgia' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=tacgia&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=tacgia&sort_type=asc';
+                                    ?>">Tác giả</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'nhaxuatban' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=nhaxuatban&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'nhaxuatban' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=nhaxuatban&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=nhaxuatban&sort_type=asc';
+                                    ?>">NXB</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'giasach' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=giasach&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'giasach' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=giasach&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=giasach&sort_type=asc';
+                                    ?>">Giá sách</a></th>
+								<th ><a href="
+                                    <?php if($_REQUEST['sort'] == 'soluong' && $_REQUEST['sort_type'] = 'asc')
+                                        echo $link . '&sort=soluong&sort_type=desc';
+                                    else if($_REQUEST['sort'] == 'soluong' && $_REQUEST['sort_type'] = 'desc')
+                                        echo $link . '&sort=soluong&sort_type=asc';
+                                    else
+                                        echo $link . '&sort=soluong&sort_type=asc';
+                                    ?>">Số lượng</a></th>
 								<th >Thao tác</th>
 							</tr>
 						</thead>
