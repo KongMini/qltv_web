@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 04:00 PM
+-- Generation Time: Nov 27, 2022 at 07:04 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -319,9 +319,6 @@ INSERT INTO `e4_leftmenu` (`id`, `parent_id`, `title_vi`, `title_en`, `icon`, `l
 (110, 0, 'Quản lý tác giả', 'Authors Management', '', '?module=book_author', 'active', 1, 3, 'deactive', '1', 1597808641),
 (111, 0, 'Quản lý NXB', 'Book NXB Management', '', '?module=book_nxb', 'active', 1, 2, 'deactive', '1', 1597819881),
 (112, 0, 'Quản lý nội dung sách', 'Book Content Management', 'fa fa-book', '', 'deactive', 1, 1, 'deactive', '1', 1597823910),
-(113, 0, 'Quản lý sự kiện', 'Event Management', '', '?module=event', 'deactive', 1, 99, 'deactive', '1', 1597824883),
-(114, 0, 'Thư viện danh ngôn', 'Quotation Management', '', '?module=quotation', 'deactive', 1, 99, 'deactive', '1', 1597828844),
-(116, 0, 'Quản lý bộ sưu tập', '', 'fa fa-book', '?module=albums', 'deactive', 1, 0, 'deactive', '1', 1655795440),
 (117, 0, 'Quản lý độc giả', '', '', '?module=student', 'active', 1, 9, 'deactive', '1', 1666858318);
 
 -- --------------------------------------------------------
@@ -408,17 +405,17 @@ CREATE TABLE `e4_muonsach` (
 --
 
 INSERT INTO `e4_muonsach` (`id`, `id_sinhvien`, `id_sach`, `soluong`, `status`, `time_update`) VALUES
-(1, 13, 2, 1, 0, 1666985005),
-(2, 13, 1, 1, 0, 1666985005),
-(3, 13, 2, 1, 0, 1666985005),
-(4, 13, 2, 1, 0, 1666986246),
+(1, 13, 2, 1, 3, 1666985005),
+(2, 13, 1, 1, 3, 1666985005),
+(3, 13, 2, 1, 3, 1666985005),
+(4, 13, 2, 1, 3, 1666986246),
 (5, 14, 2, 1, 1, 1668194468),
-(6, 14, 1, 1, 0, 1666986359),
-(7, 13, 2, 1, 0, 1667031491),
-(8, 13, 2, 1, 0, 1667031608),
-(9, 13, 1, 1, 0, 1667031608),
-(10, 13, 2, 1, 1, 1667057509),
-(11, 14, 2, 1, 1, 1667057396),
+(6, 14, 1, 1, 3, 1666986359),
+(7, 13, 2, 1, 3, 1667031491),
+(8, 13, 2, 1, 3, 1667031608),
+(9, 13, 1, 1, 3, 1667031608),
+(10, 13, 2, 1, 3, 1667057509),
+(11, 14, 2, 1, 3, 1667057396),
 (12, 14, 1, 1, 1, 1668194450);
 
 -- --------------------------------------------------------
@@ -461,8 +458,8 @@ CREATE TABLE `e4_options` (
 INSERT INTO `e4_options` (`id`, `option_name`, `option_value`, `autoload`) VALUES
 (1, 'comments_notify', '1', 'yes'),
 (2, 'mailserver_url', 'smtp.gmail.com', 'yes'),
-(3, 'mailserver_login', 'nhaphangtaobao.contact@gmail.com', 'yes'),
-(4, 'mailserver_pass', 'Nguyenhuuthang@123', 'yes'),
+(3, 'mailserver_login', 'tapchi.ibst@gmail.com', 'yes'),
+(4, 'mailserver_pass', 'zxgezvempiqjjsmf', 'yes'),
 (5, 'mailserver_port', '465', 'yes'),
 (6, 'default_comment_status', 'open', 'yes'),
 (7, 'posts_per_page', '6', 'yes'),
@@ -587,7 +584,7 @@ CREATE TABLE `e4_roles` (
 INSERT INTO `e4_roles` (`id`, `role_code`, `role_desc`, `status`, `menu_id`, `module_name_list`, `function_code_list`) VALUES
 (5, 'Quyền quản trị hệ thống', 'Dành cho người quản trị hệ thống', 1, '117,112,109,108,111,110,107,106,103,102,104,105,95,101,15,96,72,87,49,99,92,91,73,90,74,33,25,51,2,13,10,11', 'albums,student,albums,product_tags,quotation,event,book_nxb,book_author,book,book_category,contact,cart,product_type,product_group,product,product_category,news_tags,analytics_code,news_topic,news_type,news_group,news,web_information,web_image,web_home,product,profile,web_menu,block,task,roles,module,menu_admin,news_category,user', 'student_add,student_delete,student_edit,product_tags_add,product_tags_delete,product_tags_edit,product_tags_view,quotation_add,quotation_delete,quotation_edit,quotation_view,event_add,event_delete,event_edit,event_view,book_nxb_add,book_nxb_delete,book_nxb_edit,book_nxb_view,book_author_add,book_author_delete,book_author_edit,book_author_view,book_add,book_delete,book_edit,book_view,book_category_add,book_category_delete,book_category_edit,book_category_view,contact_delete,contact_edit,contact_event,contact_newsletter,contact_view,cart_add,cart_delete,cart_edit,cart_view,product_type_add,product_type_delete,product_type_edit,product_type_view,product_group_add,product_group_delete,product_group_edit,product_group_view,product_add,product_delete,product_edit,product_view,product_category_add,product_category_delete,product_category_edit,product_category_view,news_tags_add,news_tags_delete,news_tags_edit,news_tags_view,analytics_code_add,analytics_code_delete,analytics_code_edit,analytics_code_view,news_topic_add,news_topic_delete,news_topic_edit,news_topic_view,news_type_add,news_type_delete,news_type_edit,news_type_view,news_group_add,news_group_delete,news_group_edit,news_group_view,news_add,news_delete,news_edit,news_view,web_branches_add,web_branches_delete,web_branches_edit,web_information_edit,web_image_add,web_image_delete,web_image_edit,web_image_view,web_home_add,web_home_delete,web_home_edit,web_home_view,product_add,product_category_add,product_category_delete,product_category_edit,product_category_view,product_delete,product_edit,product_view,profile_change_pass,profile_edit,web_link_edit,web_menu_add,web_menu_delete,web_menu_edit,web_menu_view,block_add,block_delete,block_edit,block_view,task_add,task_delete,task_edit,task_view,roles_add,roles_delete,roles_edit,roles_menu_access,roles_module_action,roles_view,module_add,module_delete,module_edit,module_view,menu_admin_add,menu_admin_delete,menu_admin_edit,menu_admin_view,news_category_add,news_category_delete,news_category_edit,news_category_view,user_add,user_delete,user_edit,user_publish,user_unpublish,user_view'),
 (9, 'Nhân viên', 'Dành cho nhân viên quản lý thư viện', 1, '87,74', 'lien-he,dich-vu,recruitments,projects,product,profile,news', 'recruitments_add,recruitments_category_add,recruitments_category_delete,recruitments_category_edit,recruitments_category_view,recruitments_delete,recruitments_edit,recruitments_view,projects_add,projects_category_add,projects_category_delete,projects_category_edit,projects_category_view,projects_delete,projects_edit,projects_view,product_add,product_category_add,product_category_delete,product_category_edit,product_category_view,product_delete,product_edit,product_view,profile_change_pass,profile_edit,news_add,news_category_add,news_category_delete,news_category_edit,news_category_view,news_delete,news_edit,news_view'),
-(10, 'Sinh viên', 'Xem thông tin sinh viên', 1, '109,87', '', '');
+(10, 'Sinh viên', 'Xem thông tin sinh viên', 1, '109,107,87', 'book,cart,profile', 'book_view,cart_edit,profile_change_pass,profile_edit');
 
 -- --------------------------------------------------------
 
@@ -677,9 +674,9 @@ INSERT INTO `e4_users` (`id`, `masv`, `user_type`, `fullname`, `password`, `emai
 (5, '', 'admin', 'Nam Cao', 'e10adc3949ba59abbe56e057f20f883e', 'namcao@gmail.com', 9, 1, '5208090a665f02910bac740d9399e5d6', NULL, NULL, '', 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Namcao.jpg', '', NULL, NULL, 1597945921, 'admin@gmail.com', 1598805473, 'admin@gmail.com', 'danhnhan', '', '', '', 0),
 (6, '', 'admin', 'Ngô Tất Tố', '0cc175b9c0f1b6a831c399e269772661', 'ngotatto@gmail.com', 9, 1, '7dd9dee258a8b96026f846c7605fd0d1', NULL, NULL, '', 'https://upload.wikimedia.org/wikipedia/vi/9/92/NgoTatTo.jpg', '', NULL, NULL, 1597945991, 'admin@gmail.com', 1598762734, 'admin@gmail.com', 'vietnam', '', '', '', 0),
 (7, '', 'admin', 'Thạch Lam', '0cc175b9c0f1b6a831c399e269772661', 'thachlam@gmail.com', 9, 1, '65df97c8e1ed609c4250b16341c75aba', NULL, NULL, '', 'https://media.ex-cdn.com/EXP/media.nongnghiep.vn/files/bao_in/2020/05/19/thachlam-0928_20200519_694-100644.jpeg', '', NULL, NULL, 1597946064, 'admin@gmail.com', 1598762740, 'admin@gmail.com', 'quocte', '', '', '', 0),
-(13, '1851062330', 'public', 'Phùng Văn Công', 'e10adc3949ba59abbe56e057f20f883e', '1851062330@e.tlu.edu.vn', 9, 1, 'c739373b3a5604e8be503095dbcd92e7', NULL, NULL, NULL, '', '', NULL, NULL, 1666861526, 'admin@gmail.com', 1666861526, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642772', 0),
-(14, '1851062345', 'public', 'Đào Tùng Lâm', 'e10adc3949ba59abbe56e057f20f883e', '1851062345@e.tlu.edu.vn', 9, 1, 'e714f66102588512cad19bc913098fc8', NULL, NULL, NULL, '', '', NULL, NULL, 1666862294, 'admin@gmail.com', 1666862294, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642773', 220000),
-(15, '1851061640', 'public', 'Đỗ Thị Linh', 'e10adc3949ba59abbe56e057f20f883e', '1851061640@e.tlu.edu.vn', 9, 1, '0ba7aaffef06206de764a9bbe27fe598', NULL, NULL, NULL, '', '    ', NULL, NULL, 1668191804, 'admin@gmail.com', 1668191804, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0987654331', 0);
+(13, '1851062330', 'admin', 'Phùng Văn Công', 'e10adc3949ba59abbe56e057f20f883e', '1851062330@e.tlu.edu.vn', 10, 1, 'c739373b3a5604e8be503095dbcd92e7', NULL, NULL, NULL, '', '', NULL, NULL, 1666861526, 'admin@gmail.com', 1666861526, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642772', 0),
+(14, '1851062345', 'admin', 'Đào Tùng Lâm', 'e10adc3949ba59abbe56e057f20f883e', '1851062345@e.tlu.edu.vn', 10, 1, 'e714f66102588512cad19bc913098fc8', NULL, NULL, NULL, '', '', NULL, NULL, 1666862294, 'admin@gmail.com', 1666862294, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0973642773', 220000),
+(15, '1851061640', 'admin', 'Đỗ Thị Linh', 'e10adc3949ba59abbe56e057f20f883e', '1851061640@e.tlu.edu.vn', 10, 1, '0ba7aaffef06206de764a9bbe27fe598', NULL, NULL, NULL, '', '    ', NULL, NULL, 1668191804, 'admin@gmail.com', 1668191804, 'admin@gmail.com', NULL, '60TH1', 'CNTT', '0987654331', 0);
 
 -- --------------------------------------------------------
 

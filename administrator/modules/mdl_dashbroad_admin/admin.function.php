@@ -43,13 +43,19 @@ class Model
 
 
 
-        // Thông kê sách quán hạn
+        // Thông kê sách quá hạn
         $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
                 LEFT JOIN e4_book b ON b.id = a.id_sach
                 LEFT JOIN e4_users c ON c.id = a.id_sinhvien
-                WHERE (1669304578 - time_update > (20 * 86400)) AND status = 0;";
+                WHERE ($time - time_update > (20 * 86400)) AND status = 0;";
         $database->setQuery($query);
         $sachhethan = $database->loadObjectList();
+
+        // Tự động cập nhập sách quá hạn (Mượn sau 30 ngày)
+
+        $query = "UPDATE e4_muonsach SET status = 3 WHERE ($time - time_update > (20 * 86400))";
+        $database->setQuery($query);
+        $database->query();
 
         View::index($thongkesach1nam,$sachhethan,$thongkesach1ngay, $thongkesach1tuan, $thongkesach1thang);
     }

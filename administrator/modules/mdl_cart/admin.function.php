@@ -90,34 +90,32 @@ class Model
 
         }
     }
-//    static function cart_mail(){
-//        global $database;
-//        global $ariacms;
-//
-//        /** Gửi mail cho những người mượn 30 ngày*/
-//        $time = 30 * 86400;
-//
-//        $query = "SELECT * FROM `e4_users`  WHERE user_type = 'public' ORDER BY id DESC";
-//        $database->setQuery($query);
-//        $students = $database->loadObjectList();
-//        foreach ($students)
-//        $subject2 = "Thư viện Đại học Thủy lợi";
-//
-//        $content2='
-//						<h3>Kính gửi: '. $ad->fullname .'</h3>
-//						<p>Tôi sẽ rất cảm ơn nếu bạn phản biện bài báo có tựa đề `'.$news_detail["title_vi"] .'` cho tạp chí này</p>
-//						<p>Tên bài: '.$news_detail["title_vi"].'</p>
-//						<p>Tóm tắt: '.$news_detail["brief_vi"].'</p>
-//						<p>Từ khóa: '.$news_detail["tukhoa"].'</p>
-//						<p>Tài liệu tham khảo: '.$news_detail["tailieuthamkhao"].'</p>
-//						<p><a target="_blank" href="'.$ariacms->actual_link.'member/dong-y-phan-bien.html?mabaibao='.$news_detail["mabaibao"].'&id_phanbien='.$ad -> id_phanbien.'&id='.$news_detail["id"] .'">Nhấn vào đây đồng ý phản biên</a></p>
-//						<p><a target="_blank" href="'.$ariacms->actual_link.'member/tu-choi-phan-bien.html?mabaibao='.$news_detail["mabaibao"].'&id_phanbien='.$ad -> id_phanbien.'&id='. $news_detail["id"].'">Nhấn vào đây từ chối phản biên</a></p>
-//					';
-//        // Gửi email cho sinh viên
-//        if($ariacms -> sendMail( $ad->email , $ad->fullname,$subject2,$content2)){
-//            $ariacms->redirect("Tạo mới thành công", "index.php?module=cart");
-//        }
-//    }
+    static function cart_mail(){
+        global $database;
+        global $ariacms;
+
+        /** Gửi mail cho những người mượn 30 ngày*/
+        $time = time();
+
+        $query = "SELECT a.*,  b.tensach, c.fullname, c.email FROM e4_muonsach a
+                LEFT JOIN e4_book b ON b.id = a.id_sach
+                LEFT JOIN e4_users c ON c.id = a.id_sinhvien
+                WHERE ($time - time_update > (20 * 86400)) AND status = 0;";
+        $database->setQuery($query);
+        $students = $database->loadObjectList();
+        foreach ($students as $student) {
+            $subject2 = "Thư viện Đại học Thủy lợi";
+
+            $content2 = '
+						<h3>Kính gửi: ' . $student->fullname . '</h3>
+						<p>Sách: `' . $student->tensach . '` sắp quá hạn. Bạn vui lòng đến thư viện để trả sách hoặc gia hạn thêm. Xin cảm ơn!</p>
+						';
+            // Gửi email cho sinh viên
+            $ariacms->sendMail($student->email, $student->fullname, $subject2, $content2);
+        }
+        $ariacms->redirect("Gửi mail báo quá hạn thành công", "index.php?module=cart");
+
+    }
 	static function cart_edit()
 	{
 		global $database;
@@ -158,8 +156,6 @@ class Model
 
                     /** Check có trạng thái báo mất hay không */
                     if($muonsach_list[$value]['status_old'] == 2 || $muonsach_list[$value]['status_new'] == 2){
-
-
 
 //                        $giasach = $muonsach_list[$value]['giasach'];
 //

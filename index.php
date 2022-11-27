@@ -30,47 +30,16 @@ if (file_exists("include/counter.php")) {
   echo "Missing Counter File";
   exit();
 }
-// Set file sendmail
+
 if (file_exists("plugins/phpmailer/class.phpmailer.php")) {
   require_once("plugins/phpmailer/class.phpmailer.php");
 } else {
   echo "Missing Mailer File";
   exit();
 }
-/** Setup Global variables */
-$database = new database($ariaConfig_server, $ariaConfig_username, $ariaConfig_password, $ariaConfig_database);
-$ariacms = new ariacms();
-$counter = new Counter();
-/** Get web menu  */
-$query = "SELECT a.*, count(b.parent) submenu 
-	FROM e4_web_menu a 
-		LEFT JOIN (SELECT parent FROM e4_web_menu) b ON a.id = b.parent
-	WHERE a.status = 'active' 
-	GROUP BY a.id
-	ORDER BY a.order asc, a.id desc ";
-$database->setQuery($query);
-$web_menus = $database->loadObjectList();
-
-$type_menus = new stdClass;
-/** Standardized web menu */
-foreach ($web_menus as $web_menu) {
-  if ($web_menu->parent == 0) {
-    $type_menus->{$web_menu->position} = $web_menu;
-  }
+if($_SESSION["user"]['permission'] == 10){
+    header("location: http://$_SERVER[HTTP_HOST]/administrator/index.php?module=profile");
+}else{
+    header("location: http://$_SERVER[HTTP_HOST]/administrator/");
 }
-
-/** Get all e4_analytics_code */
-$query = "SELECT * FROM e4_analytics_code WHERE status = 'active' ORDER BY position, region ";
-$database->setQuery($query);
-$analytics_code = $database->loadObjectList();
-/** Get all taxonomies */
-$query = "SELECT a.*, count(b.parent) submenu, sum(ifnull(b.count,0)) total_count 
-	FROM e4_term_taxonomy a 
-		LEFT JOIN (SELECT e4_term_taxonomy.parent, e4_term_taxonomy.count FROM e4_term_taxonomy) b ON a.id = b.parent
-	WHERE a.status = 'active' 
-	GROUP BY a.id
-	ORDER BY a.position, a.order ";
-$database->setQuery($query);
-$taxonomies = $database->loadObjectList();
-/** Print site content*/
-$ariacms->getBodyContent();
+die;
