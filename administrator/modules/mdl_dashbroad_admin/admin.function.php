@@ -21,27 +21,50 @@ class Model
 
         $time = time();
 
-        // Thông kê sách 1 ngày
-        $query = "SELECT COUNT(id) as statu, status FROM `e4_muonsach` where time_update > ".($time - 86400). "GROUP By status;";
+        /** Search */
+        $start_date = $time ;
+        if($_REQUEST["start_date"]){
+            $start_date = (int) $ariacms->dateToUnix($_REQUEST['start_date']);
+        }
+        $end_date = $time + 86400;
+        if($_REQUEST["end_date"]){
+            $end_date = (int) $ariacms->dateToUnix($_REQUEST['end_date']);
+        }
+
+        $where = " where time_update > $start_date AND time_update < $end_date ";
+
+
+        // Đang mượn
+        $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
+                LEFT JOIN e4_book b ON b.id = a.id_sach
+                LEFT JOIN e4_users c ON c.id = a.id_sinhvien". $where."
+                 AND status = 0;";
         $database->setQuery($query);
-        $thongkesach1ngay = $database->loadObjectList();
+        $sachdangmuon = $database->loadObjectList();
 
-        // Thông kê sách 1 tuần
-        $query = "SELECT COUNT(id) as statu, status FROM `e4_muonsach` where time_update > ".($time - 7 * 86400). "GROUP By status;";
+        // Đã trả
+       $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
+                LEFT JOIN e4_book b ON b.id = a.id_sach
+                LEFT JOIN e4_users c ON c.id = a.id_sinhvien". $where."
+                 AND status = 1;";
         $database->setQuery($query);
-        $thongkesach1tuan = $database->loadObjectList();
+        $sachdatra = $database->loadObjectList();
 
-        // Thông kê sách 1 tháng
-        $query = "SELECT COUNT(id) as statu, status FROM `e4_muonsach` where time_update > ".($time - 30 * 86400). "GROUP By status;";
+        // Đã mất
+        $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
+                LEFT JOIN e4_book b ON b.id = a.id_sach
+                LEFT JOIN e4_users c ON c.id = a.id_sinhvien". $where."
+                 AND status = 2;";
         $database->setQuery($query);
-        $thongkesach1thang = $database->loadObjectList();
+        $sachdamat = $database->loadObjectList();
 
-        // Thông kê sách 1 năm
-        $query = "SELECT COUNT(id) as statu, status FROM `e4_muonsach` where time_update > ".($time - 365 * 86400)." GROUP By status;";
+        // Đã hết hạn
+        $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
+                LEFT JOIN e4_book b ON b.id = a.id_sach
+                LEFT JOIN e4_users c ON c.id = a.id_sinhvien". $where."
+                 AND status = 3;";
         $database->setQuery($query);
-        $thongkesach1nam = $database->loadObjectList();
-
-
+        $sachquahan = $database->loadObjectList();
 
         // Thông kê sách quá hạn
         $query = "SELECT a.*,  b.tensach, c.fullname FROM e4_muonsach a
@@ -57,6 +80,6 @@ class Model
         $database->setQuery($query);
         $database->query();
 
-        View::index($thongkesach1nam,$sachhethan,$thongkesach1ngay, $thongkesach1tuan, $thongkesach1thang);
+        View::index($sachdangmuon,$sachhethan,$sachdatra, $sachdamat, $sachquahan);
     }
 }

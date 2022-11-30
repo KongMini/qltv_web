@@ -8,6 +8,7 @@
 <script src="templates/aptcms/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="templates/aptcms/plugins/fastclick/fastclick.min.js"></script>
+<script src="templates/aptcms/plugins/chartjs/Chart1.js"></script>
 <!-- AdminLTE App -->
 <script src="templates/aptcms/dist/js/app.min.js"></script>
 <script src="templates/aptcms/js/custom.js"></script>
