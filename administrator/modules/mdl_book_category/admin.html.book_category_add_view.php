@@ -23,6 +23,14 @@ global $ariacms;
 												</div>
 											</div>
 										</div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="text-danger" for="vitri">Vị trí danh mục sách <span class="text-red">*</span></label>
+                                                    <input class="form-control" name="vitri" id="vitri" type="text" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
 									</div>
 								</div>
 							</div>

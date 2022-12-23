@@ -42,13 +42,13 @@ global $ariacms;
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="mobifone" class="col-sm-6 col-md-6 col-lg-6">Điện thoại<span class="text-red">*</span> </label>
+                                        <label for="dienthoai" class="col-sm-6 col-md-6 col-lg-6">Điện thoại<span class="text-red">*</span> </label>
                                         <label for="facebook" class="col-sm-6 col-md-6 col-lg-6">Facebook<span class="text-red">*</span> </label>
                                         <div class="col-sm-6 col-md-6 col-lg-6">
-                                            <input class="form-control" name="dienthoai" id="dienthoai" type="text" value="<?= $student['dienthoai']?>" required/>
+                                            <input class="form-control" name="dienthoai" id="dienthoai" type="text" value="<?= $student['dienthoai']?>"/>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-lg-6">
-                                            <input class="form-control" name="facebook" id="facebook" type="text" value="<?= $student['facebook']?>" required/>
+                                            <input class="form-control" name="facebook" id="facebook" type="text" value="<?= $student['facebook']?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group">

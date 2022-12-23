@@ -23,13 +23,7 @@ if (file_exists("include/ariacms.php")) {
   echo "Missing System File";
   exit();
 }
-// Include Counter File
-if (file_exists("include/counter.php")) {
-  require_once("include/counter.php");
-} else {
-  echo "Missing Counter File";
-  exit();
-}
+
 
 if (file_exists("plugins/phpmailer/class.phpmailer.php")) {
   require_once("plugins/phpmailer/class.phpmailer.php");

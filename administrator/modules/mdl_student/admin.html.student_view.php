@@ -42,6 +42,9 @@ global $ariacms;
 								<th>STT</th>
 								<th>Mã SV</th>
 								<th>Tên đầy đủ</th>
+								<th>Lớp</th>
+								<th>Khoa</th>
+								<th>SĐT</th>
 								<th>Email</th>
 								<th>Tạo lúc</th>
 								<th>Thao tác</th>
@@ -60,6 +63,9 @@ global $ariacms;
 										<td><?= $i ?></td>
 										<td><?= $student->masv ?></td>
 										<td><?= $student->fullname ?></td>
+										<td><?= $student->lop ?></td>
+										<td><?= $student->khoa ?></td>
+										<td><?= $student->dienthoai ?></td>
 										<td><?= $student->email ?></td>
 										<!-- <td><?= $student->total_book ?></td> -->
 										<td><?= $ariacms->unixToDate($student->date_created, "/") . " " . $ariacms->unixToTime($student->date_created, ":") ?></td>

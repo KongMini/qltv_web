@@ -21,7 +21,7 @@ class Model
 		if ($status == 1) $where .= " and ( a.publish = $status ) ";
 		else if ($status == 2) $where .= " and ( a.publish = 0 ) ";
 
-		echo $query = "SELECT a.*,b.role_code  FROM e4_users a 
+		$query = "SELECT a.*,b.role_code  FROM e4_users a 
 			left join e4_roles b on a.permission = b.id 
 		where user_type='admin' and permission < 10 " . $where . " 
 		GROUP BY a.id

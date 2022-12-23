@@ -52,10 +52,12 @@ class Model
 
             /** get request */
             $tieude = $_REQUEST["tieude"];
+            $vitri = $_REQUEST["vitri"];
 
             $row = new stdClass;
             $row->id 		= NULL;
             $row->tieude    = $tieude;
+            $row->vitri    = $vitri;
 
             $database->insertObject('e4_danhmucsach', $row, 'id');
 
@@ -77,11 +79,13 @@ class Model
         /** Submit -> update bản ghi*/
 		if ($_REQUEST["submit"] == "book_category_edit") {
             $tieude = $_REQUEST["tieude"];
+            $vitri = $_REQUEST["vitri"];
 
 			$row = new stdClass;
 			$row->id 		= $_GET['id'];
-
             $row->tieude    = $tieude;
+            $row->vitri    = $vitri;
+
 			$database->updateObject('e4_danhmucsach', $row, 'id');
 
             $ariacms->redirect("Cập nhật thành công", "javascript:history.back();");
@@ -92,7 +96,6 @@ class Model
 			$query = "SELECT * FROM e4_danhmucsach WHERE id = {$id}";
 			$database->setQuery($query);
 			$book_category_detail = $database->loadRow();
-
 
 			View::book_category_edit_view($book_category_detail);
 		}

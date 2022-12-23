@@ -18,10 +18,9 @@ global $ariacms;
 										<div class="col-md-8">
 											<div class="form-group">
 												<div class="col-md-12">
-													<label class="" for="tensach">Tên sách <span class="text-red">*</span></label>
-													<input class="form-control" name="tensach" id="tensach" type="text" required value="" />
+													<label class="" for="tensach">Tên sách <span class="text-red">*</span><em class="text-red" id="result_tensach"></em></label>
+													<input class="form-control" name="tensach" id="tensach" type="text" required value="" onkeyup="check_value_exist2('', '#tensach', 'e4_book', 'tensach', '#result_tensach', 'Tên sách');" />
 												</div>
-
 											</div>
 											<div class="form-group">
 												<div class="col-sm-6 col-md-6 col-lg-6">

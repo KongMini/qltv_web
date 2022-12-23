@@ -4,8 +4,8 @@ class Model
 	static function cart_view_link($row)
 	{
 		$str = '';
-		$str .= '<a href ="?module=cart&task=cart_edit&id=' . $row->id . '" ><i style="font-size: 24px" class="fa fa-pencil-square-o" data-toggle="tooltip"  title="Chi tiết đơn hàng"></i></a>&nbsp;&nbsp;';
-		$str .= '<a href ="?module=cart&task=cart_delete&id=' . $row->id . '" onclick="return confirmAction();"><i style="font-size: 24px" class="fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
+		$str .= '<a href ="?module=cart&task=cart_edit&id=' . $row->id . '" ><i style="font-size: 24px" class="fa fa-pencil-square-o" data-toggle="tooltip"  title="Chi tiết"></i></a>&nbsp;&nbsp;';
+//		$str .= '<a href ="?module=cart&task=cart_delete&id=' . $row->id . '" onclick="return confirmAction();"><i style="font-size: 24px" class="fa fa-trash text-red" data-toggle="tooltip"  title="Xóa"></i></a>&nbsp;&nbsp;';
 
 		return $str;
 	}

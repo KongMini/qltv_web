@@ -21,8 +21,8 @@ if($book_detail['image']){
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <input class="form-control" name="id" id="id" type="hidden" required value="<?=$book_detail['id']?>" />
-                                                    <label class="" for="tensach">Tên sách <span class="text-red">*</span></label>
-                                                    <input class="form-control" name="tensach" id="tensach" type="text" required value="<?=$book_detail['tensach']?>"/>
+                                                    <label class="" for="tensach">Tên sách <span class="text-red">*</span><em class="text-red" id="result_tensach"></em></label>
+                                                    <input class="form-control" name="tensach" id="tensach" type="text" required value="<?=$book_detail['tensach']?>" onkeyup="check_value_exist2('', '#masach', 'e4_book', 'masach', '#result_masach', 'Mã sách');"/>
                                                 </div>
                                             </div>
                                             <div class="form-group">

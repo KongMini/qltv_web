@@ -51,7 +51,8 @@ global $ariacms;
                                             <input class="form-control" name="dienthoai" id="dienthoai" type="text" value="" />
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-lg-6">
-                                            <input class="form-control" name="facebook" id="facebook" type="text" value="" required/>
+                                            <input class="form-control" name="facebook" id="facebook" type="text" value=""
+                                            />
                                         </div>
                                     </div>
 									<div class="form-group">

@@ -16,7 +16,8 @@ global $ariacms;
 							<tr>
 
 								<th>STT</th>
-								<th class="col-md-9">Tên danh mục sách</th>
+								<th class="col-md-5">Tên danh mục sách</th>
+								<th class="col-md-4">Vị trí</th>
 								<th class="col-md-2">Thao tác</th>
 							</tr>
 						</thead>
@@ -39,7 +40,8 @@ global $ariacms;
 										</select>
 									</td>
                                     <td><input class="form-control" name="keysearch" id="keysearch" type="text" value="<?php echo $_REQUEST['keysearch'] ?>" /></td>
-									<td>
+									<td></td>
+                                    <td>
 										<button class="btn btn-primary" name="input_submit_search" type="submit" value="Tìm kiếm">Lọc <i class="fa fa-filter"></i>
 										</button>
 									</td>
@@ -57,6 +59,7 @@ global $ariacms;
 										<?php echo $i ?>
 									</td>
 									<td><?php echo $value->tieude ?></td>
+									<td><?php echo $value->vitri ?></td>
 
 									<td><?= Model::book_category_view_link($value) ?></td>
 								</tr>
